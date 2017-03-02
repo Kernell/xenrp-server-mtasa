@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Command\User.cpp" />
+    <ClCompile Include="src\Core\Module.cpp" />
+    <ClCompile Include="src\Core\MySQL.cpp" />
+    <ClCompile Include="src\Core\MySQLResult.cpp" />
+    <ClCompile Include="src\Entity\Account.cpp" />
+    <ClCompile Include="src\Entity\Ban.cpp" />
+    <ClCompile Include="src\Entity\Blip.cpp" />
+    <ClCompile Include="src\Entity\ColShape.cpp" />
+    <ClCompile Include="src\Entity\Console.cpp" />
+    <ClCompile Include="src\Entity\Element.cpp" />
+    <ClCompile Include="src\Entity\Marker.cpp" />
+    <ClCompile Include="src\Entity\Object.cpp" />
+    <ClCompile Include="src\Entity\Ped.cpp" />
+    <ClCompile Include="src\Entity\Pickup.cpp" />
+    <ClCompile Include="src\Entity\Player.cpp" />
+    <ClCompile Include="src\Entity\RadarArea.cpp" />
+    <ClCompile Include="src\Entity\Resource.cpp" />
+    <ClCompile Include="src\Entity\Team.cpp" />
+    <ClCompile Include="src\Entity\Vehicle.cpp" />
+    <ClCompile Include="src\Entity\Water.cpp" />
+    <ClCompile Include="src\Event\EventRaisers.cpp" />
+    <ClCompile Include="src\Lua\LuaArgument.cpp" />
+    <ClCompile Include="src\Lua\LuaArguments.cpp" />
+    <ClCompile Include="src\Lua\Functions.cpp" />
+    <ClCompile Include="src\Lua\Bindings.cpp" />
+    <ClCompile Include="src\Manager\CommandManager.cpp" />
+    <ClCompile Include="src\Manager\ElementManager.cpp" />
+    <ClCompile Include="src\Manager\EventManager.cpp" />
+    <ClCompile Include="src\Math\Vector2.cpp" />
+    <ClCompile Include="src\Math\Vector3.cpp" />
+    <ClCompile Include="src\SharedUtil\Color.cpp" />
+    <ClCompile Include="src\SharedUtil\VehicleColor.cpp" />
+    <ClCompile Include="src\StdInc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\xr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Command\IConsoleCommand.h" />
+    <ClInclude Include="src\Command\User.h" />
+    <ClInclude Include="src\Core\ILuaModuleManager.h" />
+    <ClInclude Include="src\Core\Module.h" />
+    <ClInclude Include="src\Core\MySQL.h" />
+    <ClInclude Include="src\Core\MySQLResult.h" />
+    <ClInclude Include="src\Entity\Account.h" />
+    <ClInclude Include="src\Entity\Ban.h" />
+    <ClInclude Include="src\Entity\Blip.h" />
+    <ClInclude Include="src\Entity\ColShape.h" />
+    <ClInclude Include="src\Entity\Console.h" />
+    <ClInclude Include="src\Entity\Element.h" />
+    <ClInclude Include="src\Entity\Marker.h" />
+    <ClInclude Include="src\Entity\Object.h" />
+    <ClInclude Include="src\Entity\Ped.h" />
+    <ClInclude Include="src\Entity\Pickup.h" />
+    <ClInclude Include="src\Entity\Player.h" />
+    <ClInclude Include="src\Entity\RadarArea.h" />
+    <ClInclude Include="src\Entity\Resource.h" />
+    <ClInclude Include="src\Entity\Team.h" />
+    <ClInclude Include="src\Entity\Vehicle.h" />
+    <ClInclude Include="src\Entity\Water.h" />
+    <ClInclude Include="src\Event\Event.h" />
+    <ClInclude Include="src\Event\EventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\AccountDataChangeEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\BanEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\ChatMessageEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\ElementColShapeEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\ElementDataChangeEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\ElementModelChangeEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\MarkerEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PedEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PedWastedEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PedWeaponSwitchEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerBanEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerChangeNickEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerChatEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerClickEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerCommandEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerConnectEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerContactEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerDamageEvetArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerLoginEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerLogoutEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerMarkerEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerModInfoEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerPickupHitEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerPickupUseEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerPrivateMessageEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerQuitEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerScreenShotEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerSpawnEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerTargetEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\PlayerVehicleEnterEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\ResourceEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\SettingChangeEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\UnbanEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\VehicleDamageEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\VehicleEnterEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\VehicleEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\VehicleRespawnEventArgs.h" />
+    <ClInclude Include="src\Event\EventArgs\VehicleStartEnterEventArgs.h" />
+    <ClInclude Include="src\Event\EventHandler.h" />
+    <ClInclude Include="src\Event\EventRaisers.h" />
+    <ClInclude Include="src\Lua\LuaArgument.h" />
+    <ClInclude Include="src\Lua\LuaArguments.h" />
+    <ClInclude Include="src\Lua\Functions.h" />
+    <ClInclude Include="src\Lua\Bindings.h" />
+    <ClInclude Include="src\Manager\CommandManager.h" />
+    <ClInclude Include="src\Manager\ElementManager.h" />
+    <ClInclude Include="src\Manager\EventManager.h" />
+    <ClInclude Include="src\Math\Vector2.h" />
+    <ClInclude Include="src\Math\Vector3.h" />
+    <ClInclude Include="src\SharedUtil\Color.h" />
+    <ClInclude Include="src\SharedUtil\SharedUtil.h" />
+    <ClInclude Include="src\SharedUtil\VehicleColor.h" />
+    <ClInclude Include="src\StdInc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Event\EventArgs\ColShapeEventArgs.h" />
+    <None Include="src\Event\EventArgs\ConsoleEventArgs.h" />
+    <None Include="src\Event\EventArgs\DebugMessageEventArgs.h" />
+    <None Include="src\Event\EventArgs\ElementClickedEventArgs.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6CF58FBF-2A6B-43DC-84EA-04B814AF6B95}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>xr</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>bin\$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XR_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)vendor\mysql\include;$(SolutionDir)vendor\lua51\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>StdInc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>bin\$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vendor/mysql/lib/opt/libmysql.lib;vendor/lua51/lib/lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;XR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)vendor\mysql\include;$(SolutionDir)vendor\lua51\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vendor/mysql/lib/opt/libmysql.lib;vendor/lua51/lib/lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XR_EXPORTS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDcccefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)vendor\mysql\include;$(SolutionDir)vendor\lua51\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>StdInc.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>bin\$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <EnablePREfast>false</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vendor/mysql/lib/opt/libmysql.lib;vendor/lua51/lib/lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;XR_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)vendor\mysql\include;$(SolutionDir)vendor\lua51\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vendor/mysql/lib/opt/libmysql.lib;vendor/lua51/lib/lua51.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

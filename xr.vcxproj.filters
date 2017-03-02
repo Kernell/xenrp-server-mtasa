@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Command">
+      <UniqueIdentifier>{2df7f132-dc86-4f3c-9b7a-aef06e4afa17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{feec3648-6df7-477b-bde7-91a5cceda4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity">
+      <UniqueIdentifier>{009b1813-ff41-47ae-8483-068aa183e755}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{407ef7c6-04cd-4b38-9470-566c70fb5fb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{b7bd16fa-a4b3-415b-bed0-1f739fe4f4c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{4660048e-1bca-433e-8cdf-e7a9796820a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SharedUtil">
+      <UniqueIdentifier>{d61b8b32-4941-4a23-ab26-00beaa7b4afe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{5e1ab407-9be1-43b6-b601-235b31ecb58d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{445363d5-0b8e-4b33-bd78-0d44b6b69c21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event\EventArgs">
+      <UniqueIdentifier>{28daf7e0-6fc1-42df-a1c4-5479e31720b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Core\ILuaModuleManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\Module.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lua\Functions.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StdInc.h" />
+    <ClInclude Include="src\Manager\ElementManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Manager\CommandManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Command\IConsoleCommand.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Command\User.h">
+      <Filter>Command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SharedUtil\SharedUtil.h">
+      <Filter>SharedUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SharedUtil\VehicleColor.h">
+      <Filter>SharedUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SharedUtil\Color.h">
+      <Filter>SharedUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lua\Bindings.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Math\Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Manager\EventManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\Event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventHandler.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventRaisers.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\AccountDataChangeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\BanEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\ChatMessageEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\ElementColShapeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\ElementDataChangeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\ElementModelChangeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\MarkerEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PedEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PedWastedEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PedWeaponSwitchEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerBanEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerChangeNickEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerChatEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerClickEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerCommandEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerConnectEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerContactEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerDamageEvetArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerLoginEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerLogoutEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerMarkerEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerModInfoEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerPickupHitEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerPickupUseEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerPrivateMessageEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerQuitEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerScreenShotEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerSpawnEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerTargetEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\PlayerVehicleEnterEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\ResourceEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\SettingChangeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\UnbanEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\VehicleDamageEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\VehicleEnterEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\VehicleEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\VehicleRespawnEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event\EventArgs\VehicleStartEnterEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Element.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Ped.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Player.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Vehicle.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Object.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Resource.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Account.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Ban.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Blip.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\ColShape.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Console.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Marker.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Pickup.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\RadarArea.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Team.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Water.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lua\LuaArgument.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lua\LuaArguments.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\MySQL.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\MySQLResult.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Core\Module.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lua\Functions.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StdInc.cpp" />
+    <ClCompile Include="src\xr.cpp" />
+    <ClCompile Include="src\Manager\ElementManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manager\CommandManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Command\User.cpp">
+      <Filter>Command</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedUtil\VehicleColor.cpp">
+      <Filter>SharedUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedUtil\Color.cpp">
+      <Filter>SharedUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lua\Bindings.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Vector3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manager\EventManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Element.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lua\LuaArgument.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lua\LuaArguments.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event\EventRaisers.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Account.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Ban.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Blip.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\ColShape.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Console.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Marker.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Object.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Ped.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Pickup.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Player.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\RadarArea.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Resource.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Team.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Vehicle.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Water.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\MySQL.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\MySQLResult.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Event\EventArgs\ConsoleEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </None>
+    <None Include="src\Event\EventArgs\DebugMessageEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </None>
+    <None Include="src\Event\EventArgs\ColShapeEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </None>
+    <None Include="src\Event\EventArgs\ElementClickedEventArgs.h">
+      <Filter>Event\EventArgs</Filter>
+    </None>
+  </ItemGroup>
+</Project>

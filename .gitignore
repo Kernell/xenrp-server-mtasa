@@ -1,0 +1,14 @@
+/bin
+/.vs
+*.obj
+/*.user
+/ipch/XR-3d8d01b4/*.ipch
+/vendor/lua51/lib/*.pdb
+*.pdb
+/ipch
+/vendor/lua51/lua51.tlog
+/vendor/lua51/*.log
+/vendor/lua51/*.idb
+/vendor/lua51/*.pdb
+/xr.VC.VC.opendb
+/xr.VC.db
