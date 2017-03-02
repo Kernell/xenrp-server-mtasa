@@ -16,6 +16,7 @@
 Module::Module( ILuaModuleManager10* module ) :
 	LuaVM( nullptr ),
 	ModuleManager( module ),
+	DatabaseManager( nullptr ),
 	ElementManager( nullptr ),
 	EventManager( nullptr ),
 	CommandManager( nullptr )
@@ -27,6 +28,7 @@ Module::~Module()
 	SAFE_DELETE( this->ElementManager );
 	SAFE_DELETE( this->EventManager );
 	SAFE_DELETE( this->CommandManager );
+	SAFE_DELETE( this->DatabaseManager );
 
 	LuaVM = nullptr;
 }
@@ -37,9 +39,10 @@ void Module::Init( lua_State* luaVM )
 
 	this->RegisterFunctions();
 
-	this->ElementManager = new ::ElementManager( this );
-	this->EventManager   = new ::EventManager( this );
-	this->CommandManager = new ::CommandManager( this );
+	this->DatabaseManager = new ::DatabaseManager( this );
+	this->ElementManager  = new ::ElementManager( this );
+	this->EventManager    = new ::EventManager( this );
+	this->CommandManager  = new ::CommandManager( this );
 }
 
 void Module::DoPulse()
@@ -52,10 +55,12 @@ void Module::Shutdown()
 
 void Module::ResourceStarted()
 {
+	this->DatabaseManager->Connect();
 }
 
 void Module::ResourceStopping()
 {
+	this->DatabaseManager->ResourceStopping();
 }
 
 void Module::ResourceStopped()

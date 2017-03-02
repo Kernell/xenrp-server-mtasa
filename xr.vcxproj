@@ -45,6 +45,7 @@
     <ClCompile Include="src\Lua\Functions.cpp" />
     <ClCompile Include="src\Lua\Bindings.cpp" />
     <ClCompile Include="src\Manager\CommandManager.cpp" />
+    <ClCompile Include="src\Manager\DatabaseManager.cpp" />
     <ClCompile Include="src\Manager\ElementManager.cpp" />
     <ClCompile Include="src\Manager\EventManager.cpp" />
     <ClCompile Include="src\Math\Vector2.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="src\Lua\Functions.h" />
     <ClInclude Include="src\Lua\Bindings.h" />
     <ClInclude Include="src\Manager\CommandManager.h" />
+    <ClInclude Include="src\Manager\DatabaseManager.h" />
     <ClInclude Include="src\Manager\ElementManager.h" />
     <ClInclude Include="src\Manager\EventManager.h" />
     <ClInclude Include="src\Math\Vector2.h" />

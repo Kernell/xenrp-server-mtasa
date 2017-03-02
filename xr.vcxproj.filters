@@ -265,6 +265,9 @@
     <ClInclude Include="src\Core\MySQLResult.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Manager\DatabaseManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Module.cpp">
@@ -364,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="src\Core\MySQLResult.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manager\DatabaseManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

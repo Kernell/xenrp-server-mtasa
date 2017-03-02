@@ -42,6 +42,7 @@ class Module;
 
 #include "Lua/Bindings.h"
 
+#include "Manager/DatabaseManager.h"
 #include "Manager/ElementManager.h"
 #include "Manager/CommandManager.h"
 #include "Manager/EventManager.h"
@@ -71,6 +72,7 @@ public:
 
 	inline lua_State*                       GetLua              () const { return this->LuaVM; }
 
+	inline DatabaseManager*                 GetDatabase         () const { return this->DatabaseManager; }
 	inline EventManager*                    GetEventManager     () const { return this->EventManager; }
 	inline ElementManager*                  GetElementManager   () const { return this->ElementManager; }
 	inline CommandManager*                  GetCommandManager   () const { return this->CommandManager; }
@@ -115,6 +117,7 @@ private:
 	ILuaModuleManager10*                    ModuleManager;
 	lua_State*                              LuaVM;
 
+	DatabaseManager*                        DatabaseManager;
 	ElementManager*                         ElementManager;
 	CommandManager*                         CommandManager;
 	EventManager*                           EventManager;
