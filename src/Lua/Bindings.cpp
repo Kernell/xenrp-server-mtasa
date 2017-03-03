@@ -477,9 +477,9 @@ PVOID Bindings::CloneElement( lua_State* pLuaVM, PVOID pUserData, const Math::Ve
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushBoolean( bCloneElement );
 
 	if( pLuaArguments.Call( pLuaVM, "cloneElement", 1 ) )
@@ -714,9 +714,9 @@ bool Bindings::GetElementPosition( lua_State* pLuaVM, PVOID pUserData, Math::Vec
 	
 	if( pLuaArguments.Call( pLuaVM, "getElementPosition", 3 ) )
 	{
-		vecPosition.fX = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecPosition.fY = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecPosition.fZ = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecPosition.X = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecPosition.Y = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecPosition.Z = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 		
 		return true;
 	}
@@ -732,9 +732,9 @@ bool Bindings::GetElementRotation( lua_State* pLuaVM, PVOID pUserData, Math::Vec
 	
 	if( pLuaArguments.Call( pLuaVM, "getElementRotation", 3 ) )
 	{
-		vecRotation.fX = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecRotation.fY = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecRotation.fZ = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecRotation.X = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecRotation.Y = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecRotation.Z = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 		
 		return true;
 	}
@@ -751,9 +751,9 @@ bool Bindings::GetElementVelocity( lua_State* pLuaVM, PVOID pUserData, Math::Vec
 	
 	if( pLuaArguments.Call( pLuaVM, "getElementVelocity", 3 ) )
 	{
-		vecVelocity.fX = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecVelocity.fY = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecVelocity.fZ = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecVelocity.X = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecVelocity.Y = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecVelocity.Z = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 		
 		return true;
 	}
@@ -1006,12 +1006,12 @@ bool Bindings::GetElementAttachedOffsets( lua_State* pLuaVM, PVOID pUserData, Ma
 
 	if( pLuaArguments.Call( pLuaVM, "getElementAttachedOffsets", 6 ) )
 	{
-		vecPosition.fX	= static_cast< float >( LuaArgument( pLuaVM, -6 ).GetNumber() );
-		vecPosition.fY	= static_cast< float >( LuaArgument( pLuaVM, -5 ).GetNumber() );
-		vecPosition.fZ	= static_cast< float >( LuaArgument( pLuaVM, -4 ).GetNumber() );
-		vecRotation.fX	= static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecRotation.fY	= static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecRotation.fZ	= static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecPosition.X	= static_cast< float >( LuaArgument( pLuaVM, -6 ).GetNumber() );
+		vecPosition.Y	= static_cast< float >( LuaArgument( pLuaVM, -5 ).GetNumber() );
+		vecPosition.Z	= static_cast< float >( LuaArgument( pLuaVM, -4 ).GetNumber() );
+		vecRotation.X	= static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecRotation.Y	= static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecRotation.Z	= static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 
 		return true;
 	}
@@ -1196,9 +1196,9 @@ bool Bindings::SetElementPosition( lua_State* pLuaVM, PVOID pUserData, const Mat
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushBoolean( bWarp );
 
 	if( pLuaArguments.Call( pLuaVM, "setElementPosition", 1 ) )
@@ -1216,9 +1216,9 @@ bool Bindings::SetElementRotation( lua_State* pLuaVM, PVOID pUserData, const Mat
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecRotation.fX );
-	pLuaArguments.PushNumber( vecRotation.fY );
-	pLuaArguments.PushNumber( vecRotation.fZ );
+	pLuaArguments.PushNumber( vecRotation.X );
+	pLuaArguments.PushNumber( vecRotation.Y );
+	pLuaArguments.PushNumber( vecRotation.Z );
 	pLuaArguments.PushString( szRotationOrder );
 	pLuaArguments.PushBoolean( bNewWay );
 
@@ -1237,9 +1237,9 @@ bool Bindings::SetElementVelocity( lua_State* pLuaVM, PVOID pUserData, const Mat
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecVelocity.fX );
-	pLuaArguments.PushNumber( vecVelocity.fY );
-	pLuaArguments.PushNumber( vecVelocity.fZ );
+	pLuaArguments.PushNumber( vecVelocity.X );
+	pLuaArguments.PushNumber( vecVelocity.Y );
+	pLuaArguments.PushNumber( vecVelocity.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "setElementVelocity", 1 ) )
 	{
@@ -1309,13 +1309,13 @@ bool Bindings::AttachElements( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget
 
 	pLuaArguments.PushUserData( pUserData );
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
-	pLuaArguments.PushNumber( vecRotation.fX );
-	pLuaArguments.PushNumber( vecRotation.fY );
-	pLuaArguments.PushNumber( vecRotation.fZ );
+	pLuaArguments.PushNumber( vecRotation.X );
+	pLuaArguments.PushNumber( vecRotation.Y );
+	pLuaArguments.PushNumber( vecRotation.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "attachElements", 1 ) )
 	{
@@ -1422,13 +1422,13 @@ bool Bindings::SetElementAttachedOffsets( lua_State* pLuaVM, PVOID pUserData, co
 
 	pLuaArguments.PushUserData( pUserData );
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
-	pLuaArguments.PushNumber( vecRotation.fX );
-	pLuaArguments.PushNumber( vecRotation.fY );
-	pLuaArguments.PushNumber( vecRotation.fZ );
+	pLuaArguments.PushNumber( vecRotation.X );
+	pLuaArguments.PushNumber( vecRotation.Y );
+	pLuaArguments.PushNumber( vecRotation.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "setElementAttachedOffsets", 1 ) )
 	{
@@ -1962,9 +1962,9 @@ bool Bindings::SpawnPlayer( lua_State* pLuaVM, PVOID pUserData, const Math::Vect
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushNumber( iRotation );
 	pLuaArguments.PushNumber( iSkinID );
 	pLuaArguments.PushNumber( iInterior );
@@ -2204,9 +2204,9 @@ PVOID Bindings::CreatePed( lua_State* pLuaVM, int iModelid, const Math::Vector3&
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushNumber( iModelid );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushNumber( fRot );
 	pLuaArguments.PushBoolean( bSynced );
 
@@ -3309,9 +3309,9 @@ bool Bindings::GetVehicleTurnVelocity( lua_State* pLuaVM, PVOID pUserData, Math:
 
 	if( pLuaArguments.Call( pLuaVM, "getVehicleTurnVelocity", 3 ) )
 	{
-		vecTurnVelocity.fX = LuaArgument( pLuaVM, -3 ).GetNumber< float >();
-		vecTurnVelocity.fY = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
-		vecTurnVelocity.fZ = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
+		vecTurnVelocity.X = LuaArgument( pLuaVM, -3 ).GetNumber< float >();
+		vecTurnVelocity.Y = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
+		vecTurnVelocity.Z = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
 
 		return true;
 	}
@@ -3327,8 +3327,8 @@ bool Bindings::GetVehicleTurretPosition( lua_State* pLuaVM, PVOID pUserData, Mat
 
 	if( pLuaArguments.Call( pLuaVM, "getVehicleTurretPosition", 2 ) )
 	{
-		vecPosition.fX = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
-		vecPosition.fY = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
+		vecPosition.X = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
+		vecPosition.Y = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
 
 		return true;
 	}
@@ -4647,9 +4647,9 @@ PVOID Bindings::CreateMarker( lua_State* pLuaVM, const Math::Vector3& vecPositio
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushString( szType );
 	pLuaArguments.PushNumber( fSize );
 	pLuaArguments.PushNumber( color.R );
@@ -4752,9 +4752,9 @@ bool Bindings::GetMarkerTarget( lua_State* pLuaVM, PVOID pUserData, Math::Vector
 
 	if( pLuaArguments.Call( pLuaVM, "getMarkerTarget", 3 ) )
 	{
-		vecTarget.fX	= static_cast< unsigned char >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecTarget.fY	= static_cast< unsigned char >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecTarget.fZ	= static_cast< unsigned char >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecTarget.X	= static_cast< unsigned char >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecTarget.Y	= static_cast< unsigned char >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecTarget.Z	= static_cast< unsigned char >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 
 		return true;
 	}
@@ -4841,9 +4841,9 @@ bool Bindings::SetMarkerTarget( lua_State* pLuaVM, PVOID pUserData, const Math::
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( pTarget.fX );
-	pLuaArguments.PushNumber( pTarget.fY );
-	pLuaArguments.PushNumber( pTarget.fZ );
+	pLuaArguments.PushNumber( pTarget.X );
+	pLuaArguments.PushNumber( pTarget.Y );
+	pLuaArguments.PushNumber( pTarget.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "setMarkerTarget", 1 ) )
 	{
@@ -4878,9 +4878,9 @@ PVOID Bindings::CreateBlip( lua_State* pLuaVM, const Math::Vector3& vecPosition,
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushNumber( ucIcon );
 	pLuaArguments.PushNumber( ucSize );
 	pLuaArguments.PushNumber( color.R );
@@ -5129,13 +5129,13 @@ PVOID Bindings::CreateObject( lua_State* pLuaVM, unsigned short usModelID, const
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
-	pLuaArguments.PushNumber( vecRotation.fX );
-	pLuaArguments.PushNumber( vecRotation.fY );
-	pLuaArguments.PushNumber( vecRotation.fZ );
+	pLuaArguments.PushNumber( vecRotation.X );
+	pLuaArguments.PushNumber( vecRotation.Y );
+	pLuaArguments.PushNumber( vecRotation.Z );
 
 	pLuaArguments.PushBoolean( bIsLowLod );
 
@@ -5162,9 +5162,9 @@ bool Bindings::GetObjectScale( lua_State* pLuaVM, PVOID pUserData, Math::Vector3
 
 	if( pLuaArguments.Call( pLuaVM, "getObjectScale", 3 ) )
 	{
-		vecScale.fX = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
-		vecScale.fY = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
-		vecScale.fZ = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
+		vecScale.X = static_cast< float >( LuaArgument( pLuaVM, -3 ).GetNumber() );
+		vecScale.Y = static_cast< float >( LuaArgument( pLuaVM, -2 ).GetNumber() );
+		vecScale.Z = static_cast< float >( LuaArgument( pLuaVM, -1 ).GetNumber() );
 
 		return true;
 	}
@@ -5180,9 +5180,9 @@ bool Bindings::SetObjectScale( lua_State* pLuaVM, PVOID pUserData, const Math::V
 
 	pLuaArguments.PushUserData( pUserData );
 
-	pLuaArguments.PushNumber( vecScale.fX );
-	pLuaArguments.PushNumber( vecScale.fY );
-	pLuaArguments.PushNumber( vecScale.fZ );
+	pLuaArguments.PushNumber( vecScale.X );
+	pLuaArguments.PushNumber( vecScale.Y );
+	pLuaArguments.PushNumber( vecScale.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "setObjectScale", 1 ) )
 	{
@@ -5200,12 +5200,12 @@ bool Bindings::MoveObject( lua_State* pLuaVM, PVOID pUserData, unsigned long ulT
 
 	pLuaArguments.PushUserData( pUserData );
 	pLuaArguments.PushNumber( ulTime );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
-	pLuaArguments.PushNumber( vecRotation.fX );
-	pLuaArguments.PushNumber( vecRotation.fY );
-	pLuaArguments.PushNumber( vecRotation.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
+	pLuaArguments.PushNumber( vecRotation.X );
+	pLuaArguments.PushNumber( vecRotation.Y );
+	pLuaArguments.PushNumber( vecRotation.Z );
 	pLuaArguments.PushString( szEasingType );
 	pLuaArguments.PushNumber( fEasingPeriod );
 	pLuaArguments.PushNumber( fEasingAmplitude );
@@ -5243,11 +5243,11 @@ PVOID Bindings::CreateRadarArea( lua_State* pLuaVM, const Math::Vector2& vecPosi
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
 
-	pLuaArguments.PushNumber( vecSize.fX );
-	pLuaArguments.PushNumber( vecSize.fY );
+	pLuaArguments.PushNumber( vecSize.X );
+	pLuaArguments.PushNumber( vecSize.Y );
 
 	pLuaArguments.PushNumber( color.R );
 	pLuaArguments.PushNumber( color.G );
@@ -5282,8 +5282,8 @@ bool Bindings::GetRadarAreaSize( lua_State* pLuaVM, PVOID pUserData, Math::Vecto
 
 	if( pLuaArguments.Call( pLuaVM, "getRadarAreaSize", 2 ) )
 	{
-		vecSize.fX = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
-		vecSize.fY = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
+		vecSize.X = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
+		vecSize.Y = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
 
 		return true;
 	}
@@ -5349,8 +5349,8 @@ bool Bindings::SetRadarAreaSize( lua_State* pLuaVM, PVOID pUserData, const Math:
 	LuaArguments pLuaArguments;
 
 	pLuaArguments.PushUserData( pUserData );
-	pLuaArguments.PushNumber( vecSize.fX );
-	pLuaArguments.PushNumber( vecSize.fY );
+	pLuaArguments.PushNumber( vecSize.X );
+	pLuaArguments.PushNumber( vecSize.Y );
 
 	if( pLuaArguments.Call( pLuaVM, "setRadarAreaSize", 1 ) )
 	{
@@ -5405,9 +5405,9 @@ PVOID Bindings::CreatePickup( lua_State* pLuaVM, const Math::Vector3& vecPositio
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	pLuaArguments.PushNumber( ucType );
 	pLuaArguments.PushNumber( dFive );
@@ -5599,8 +5599,8 @@ PVOID Bindings::CreateColCircle( lua_State* pLuaVM, const Math::Vector2& vecPosi
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
 	pLuaArguments.PushNumber( fRadius );
 
 	if( pLuaArguments.Call( pLuaVM, "createColCircle", 1 ) )
@@ -5620,13 +5620,13 @@ PVOID Bindings::CreateColCuboid( lua_State* pLuaVM, const Math::Vector3& vecPosi
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
-	pLuaArguments.PushNumber( vecSize.fX );
-	pLuaArguments.PushNumber( vecSize.fY );
-	pLuaArguments.PushNumber( vecSize.fZ );
+	pLuaArguments.PushNumber( vecSize.X );
+	pLuaArguments.PushNumber( vecSize.Y );
+	pLuaArguments.PushNumber( vecSize.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "createColCuboid", 1 ) )
 	{
@@ -5645,9 +5645,9 @@ PVOID Bindings::CreateColSphere( lua_State* pLuaVM, const Math::Vector3& vecPosi
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	pLuaArguments.PushNumber( fRadius );
 
@@ -5668,11 +5668,11 @@ PVOID Bindings::CreateColRectangle( lua_State* pLuaVM, const Math::Vector2& vecP
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
 
-	pLuaArguments.PushNumber( vecSize.fX );
-	pLuaArguments.PushNumber( vecSize.fY );
+	pLuaArguments.PushNumber( vecSize.X );
+	pLuaArguments.PushNumber( vecSize.Y );
 
 	if( pLuaArguments.Call( pLuaVM, "createColRectangle", 1 ) )
 	{
@@ -5696,10 +5696,10 @@ PVOID Bindings::CreateColPolygon( lua_State* pLuaVM, const vector< Math::Vector2
 
 	LuaArguments pLuaArguments;
 
-	for( unsigned int i = 0; i < vecPointList.size(); i++ )
+	for( const auto& vec : vecPointList )
     {
-        pLuaArguments.PushNumber( vecPointList[ i ].fX );
-        pLuaArguments.PushNumber( vecPointList[ i ].fY );
+        pLuaArguments.PushNumber( vec.X );
+        pLuaArguments.PushNumber( vec.Y );
     }
 
 	if( pLuaArguments.Call( pLuaVM, "createColRectangle", 1 ) )
@@ -5719,9 +5719,9 @@ PVOID Bindings::CreateColTube( lua_State* pLuaVM, const Math::Vector3& vecPositi
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	pLuaArguments.PushNumber( fRadius );
 	pLuaArguments.PushNumber( fHeight );
@@ -5745,9 +5745,9 @@ bool Bindings::CreateExplosion( lua_State* pLuaVM, const Math::Vector3& vecPosit
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	pLuaArguments.PushNumber( ucType );
 
@@ -5793,9 +5793,9 @@ bool Bindings::PlayMissionAudio( lua_State* pLuaVM, PVOID pElement, Math::Vector
 
 	pLuaArguments.PushNumber( usSlot );
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "playMissionAudio", 1 ) )
 	{
@@ -6217,23 +6217,23 @@ PVOID Bindings::CreateWater( lua_State* pLuaVM, Math::Vector3* pV1, Math::Vector
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( pV1->fX );
-	pLuaArguments.PushNumber( pV1->fY );
-	pLuaArguments.PushNumber( pV1->fZ );
+	pLuaArguments.PushNumber( pV1->X );
+	pLuaArguments.PushNumber( pV1->Y );
+	pLuaArguments.PushNumber( pV1->Z );
 
-	pLuaArguments.PushNumber( pV2->fX );
-	pLuaArguments.PushNumber( pV2->fY );
-	pLuaArguments.PushNumber( pV2->fZ );
+	pLuaArguments.PushNumber( pV2->X );
+	pLuaArguments.PushNumber( pV2->Y );
+	pLuaArguments.PushNumber( pV2->Z );
 
-	pLuaArguments.PushNumber( pV3->fX );
-	pLuaArguments.PushNumber( pV3->fY );
-	pLuaArguments.PushNumber( pV3->fZ );
+	pLuaArguments.PushNumber( pV3->X );
+	pLuaArguments.PushNumber( pV3->Y );
+	pLuaArguments.PushNumber( pV3->Z );
 
 	if( pV4 )
 	{
-		pLuaArguments.PushNumber( pV4->fX );
-		pLuaArguments.PushNumber( pV4->fY );
-		pLuaArguments.PushNumber( pV4->fZ );
+		pLuaArguments.PushNumber( pV4->X );
+		pLuaArguments.PushNumber( pV4->Y );
+		pLuaArguments.PushNumber( pV4->Z );
 	}
 
 	pLuaArguments.PushBoolean( bShallow );
@@ -6324,9 +6324,9 @@ bool Bindings::GetWaterVertexPosition( lua_State* pLuaVM, PVOID pWater, int iVer
 
 	if( pLuaArguments.Call( pLuaVM, "getWaterVertexPosition", 3 ) )
 	{
-		vecPosition.fX = LuaArgument( pLuaVM, -3 ).GetNumber< float >();
-		vecPosition.fY = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
-		vecPosition.fZ = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
+		vecPosition.X = LuaArgument( pLuaVM, -3 ).GetNumber< float >();
+		vecPosition.Y = LuaArgument( pLuaVM, -2 ).GetNumber< float >();
+		vecPosition.Z = LuaArgument( pLuaVM, -1 ).GetNumber< float >();
 
 		return true;
 	}
@@ -6340,9 +6340,9 @@ bool Bindings::SetWaterVertexPosition( lua_State* pLuaVM, PVOID pWater, int iVer
 
 	pLuaArguments.PushUserData( pWater );
 	pLuaArguments.PushNumber( iVertexIndex );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	if( pLuaArguments.Call( pLuaVM, "setWaterVertexPosition", 1 ) )
 	{
@@ -6539,9 +6539,9 @@ bool Bindings::GetZoneName( lua_State* pLuaVM, Math::Vector3& vecPosition, strin
 {
 	LuaArguments pLuaArguments;
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
 	pLuaArguments.PushBoolean( bCitiesOnly );
 
@@ -7549,9 +7549,9 @@ bool Bindings::RemoveWorldModel( lua_State* pLuaVM, unsigned short usModel, floa
 
 	pLuaArguments.PushNumber( usModel );
 	pLuaArguments.PushNumber( fRadius );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushNumber( cInterior );
 
 	if( pLuaArguments.Call( pLuaVM, "removeWorldModel", 1 ) )
@@ -7570,9 +7570,9 @@ bool Bindings::RestoreWorldModel( lua_State* pLuaVM, unsigned short usModel, flo
 
 	pLuaArguments.PushNumber( usModel );
 	pLuaArguments.PushNumber( fRadius );
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 	pLuaArguments.PushNumber( cInterior );
 
 	if( pLuaArguments.Call( pLuaVM, "restoreWorldModel", 1 ) )
@@ -8944,16 +8944,16 @@ bool Bindings::GetCameraMatrix( lua_State* pLuaVM, PVOID pPlayer, Math::Vector3&
 
 			switch( i )
 			{
-				case 0: vecPosition.fX  = fValue; break;
-				case 1: vecPosition.fY  = fValue; break;
-				case 2: vecPosition.fZ  = fValue; break;
+				case 0: vecPosition.X  = fValue; break;
+				case 1: vecPosition.Y  = fValue; break;
+				case 2: vecPosition.Z  = fValue; break;
 
-				case 3: vecLookAt.fX    = fValue; break;
-				case 4: vecLookAt.fY    = fValue; break;
-				case 5: vecLookAt.fZ    = fValue; break;
+				case 3: vecLookAt.X    = fValue; break;
+				case 4: vecLookAt.Y    = fValue; break;
+				case 5: vecLookAt.Z    = fValue; break;
 
-				case 6: fRoll           = fValue; break;
-				case 7: fFOV            = fValue; break;
+				case 6: fRoll          = fValue; break;
+				case 7: fFOV           = fValue; break;
 			}
 
 			i++;
@@ -9013,13 +9013,13 @@ bool Bindings::SetCameraMatrix( lua_State* pLuaVM, PVOID pElement, const Math::V
 
 	pLuaArguments.PushUserData( pElement );
 
-	pLuaArguments.PushNumber( vecPosition.fX );
-	pLuaArguments.PushNumber( vecPosition.fY );
-	pLuaArguments.PushNumber( vecPosition.fZ );
+	pLuaArguments.PushNumber( vecPosition.X );
+	pLuaArguments.PushNumber( vecPosition.Y );
+	pLuaArguments.PushNumber( vecPosition.Z );
 
-	pLuaArguments.PushNumber( pvecLookAt.fX );
-	pLuaArguments.PushNumber( pvecLookAt.fY );
-	pLuaArguments.PushNumber( pvecLookAt.fZ );
+	pLuaArguments.PushNumber( pvecLookAt.X );
+	pLuaArguments.PushNumber( pvecLookAt.Y );
+	pLuaArguments.PushNumber( pvecLookAt.Z );
 
 	pLuaArguments.PushNumber( fRoll );
 	pLuaArguments.PushNumber( fFOV );

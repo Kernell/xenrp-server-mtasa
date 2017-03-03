@@ -20,11 +20,11 @@ namespace Math
 	class Vector2
 	{
 	public:
-		float fX;
-		float fY;
+		float X;
+		float Y;
 
 		Vector2();
-		Vector2( float _fX, float _fY );
+		Vector2( float x, float y );
 
 		float		DotProduct		( Vector2& other ) const;
 		float		Length			() const;

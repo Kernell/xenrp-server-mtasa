@@ -26,16 +26,16 @@ namespace Math
 	class Vector3
 	{
 	public:
-		float fX, fY, fZ;
+		float X, Y, Z;
 
 					Vector3			();
-					Vector3			( float fX, float fY, float fZ );
+					Vector3			( float x, float y, float z );
 
 		float		Normalize		( void );
 		float		Length			( void ) const;
 		float		LengthSquared	( void ) const;
-		float		DotProduct		( const Vector3 * param ) const;
-		void		CrossProduct	( const Vector3 * param );
+		float		DotProduct		( const Vector3* param ) const;
+		void		CrossProduct	( const Vector3* param );
 
 		// Convert (direction) to rotation
 		Vector3		ToRotation		() const;

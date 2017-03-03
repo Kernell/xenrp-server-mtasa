@@ -3,31 +3,27 @@
 
 using namespace Math;
 
-Vector2::Vector2()
+Vector2::Vector2() : X( 0 ), Y( 0 )
 {
-	fX = 0;
-	fY = 0;
 }
 
-Vector2::Vector2( float _fX, float _fY )
+Vector2::Vector2( float x, float y ) : X( x ), Y( y )
 {
-	fX = _fX;
-	fY = _fY;
 }
 
 float Vector2::DotProduct( Vector2& other ) const
 {
-	return fX * other.fX + fY * other.fY;
+	return X * other.X + Y * other.Y;
 }
 
 float Vector2::Length() const
 {
-	return sqrt( fX * fX + fY * fY );
+	return sqrt( X * X + Y * Y );
 }
 
 float Vector2::LengthSquared() const
 {
-	return ( fX*fX ) + ( fY*fY );
+	return ( X * X ) + ( Y * Y );
 }
 
 void Vector2::Normalize()
@@ -36,97 +32,97 @@ void Vector2::Normalize()
 
 	if( fLength > 0.0f )
 	{
-		fX /= fLength;
-		fY /= fLength;
+		X /= fLength;
+		Y /= fLength;
 	}
 }
 
 Vector2 Vector2::operator * ( float fRight ) const
 {
-	return Vector2( fX * fRight, fY * fRight );
+	return Vector2( X * fRight, Y * fRight );
 }
 
 Vector2 Vector2::operator / ( float fRight ) const
 {
 	float fRcpValue = 1 / fRight;
 
-	return Vector2( fX * fRcpValue, fY * fRcpValue );
+	return Vector2( X * fRcpValue, Y * fRcpValue );
 }
 
 Vector2 Vector2::operator + ( const Vector2& vecRight ) const
 {
-	return Vector2( fX + vecRight.fX, fY + vecRight.fY );
+	return Vector2( X + vecRight.X, Y + vecRight.Y );
 }
 
 Vector2 Vector2::operator - ( const Vector2& vecRight ) const
 {
-	return Vector2( fX - vecRight.fX, fY - vecRight.fY );
+	return Vector2( X - vecRight.X, Y - vecRight.Y );
 }
 
 Vector2 Vector2::operator * ( const Vector2& vecRight ) const
 {
-	return Vector2( fX * vecRight.fX, fY * vecRight.fY );
+	return Vector2( X * vecRight.X, Y * vecRight.Y );
 }
 
 Vector2 Vector2::operator / ( const Vector2& vecRight ) const
 {
-	return Vector2( fX / vecRight.fX, fY / vecRight.fY );
+	return Vector2( X / vecRight.X, Y / vecRight.Y );
 }
 
 void Vector2::operator += ( float fRight )
 {
-	fX += fRight;
-	fY += fRight;
+	X += fRight;
+	Y += fRight;
 }
 
 void Vector2::operator += ( const Vector2& vecRight )
 {
-	fX += vecRight.fX;
-	fY += vecRight.fY;
+	X += vecRight.X;
+	Y += vecRight.Y;
 }
 
 void Vector2::operator -= ( float fRight )
 {
-	fX -= fRight;
-	fY -= fRight;
+	X -= fRight;
+	Y -= fRight;
 }
 
 void Vector2::operator -= ( const Vector2& vecRight )
 {
-	fX -= vecRight.fX;
-	fY -= vecRight.fY;
+	X -= vecRight.X;
+	Y -= vecRight.Y;
 }
 
 void Vector2::operator *= ( float fRight )
 {
-	fX *= fRight;
-	fY *= fRight;
+	X *= fRight;
+	Y *= fRight;
 }
 
 void Vector2::operator *= ( const Vector2& vecRight )
 {
-	fX *= vecRight.fX;
-	fY *= vecRight.fY;
+	X *= vecRight.X;
+	Y *= vecRight.Y;
 }
 
 void Vector2::operator /= ( float fRight )
 {
-	fX /= fRight;
-	fY /= fRight;
+	X /= fRight;
+	Y /= fRight;
 }
 
 void Vector2::operator /= ( const Vector2& vecRight )
 {
-	fX /= vecRight.fX;
-	fY /= vecRight.fY;
+	X /= vecRight.X;
+	Y /= vecRight.Y;
 }
 
 bool Vector2::operator == ( const Vector2& param ) const
 {
-	return ( ( fabs( fX - param.fX ) < FLOAT_EPSILON ) && ( fabs( fY - param.fY ) < FLOAT_EPSILON ) );
+	return ( ( fabs( X - param.X ) < FLOAT_EPSILON ) && ( fabs( Y - param.Y ) < FLOAT_EPSILON ) );
 }
 
 bool Vector2::operator != ( const Vector2& param ) const
 {
-	return ( ( fabs( fX - param.fX ) >= FLOAT_EPSILON ) || ( fabs( fY - param.fY ) >= FLOAT_EPSILON ) );
+	return ( ( fabs( X - param.X ) >= FLOAT_EPSILON ) || ( fabs( Y - param.Y ) >= FLOAT_EPSILON ) );
 }

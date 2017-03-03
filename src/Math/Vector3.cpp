@@ -3,31 +3,27 @@
 
 using namespace Math;
 
-Vector3::Vector3( void )
+Vector3::Vector3() :
+	X( 0 ), Y( 0 ), Z( 0 )
 {
-	this->fX = 0;
-	this->fY = 0;
-	this->fZ = 0;
 };
 
-Vector3::Vector3( float fX, float fY, float fZ )
+Vector3::Vector3( float x, float y, float z ) :
+	X( x ), Y( y ), Z( z )
 {
-	this->fX = fX;
-	this->fY = fY;
-	this->fZ = fZ;
 }
 
-float Vector3::Normalize( void )
+float Vector3::Normalize()
 {
-	float t = sqrt( this->fX * this->fX + this->fY * this->fY + this->fZ * this->fZ );
+	float t = sqrt( this->X * this->X + this->Y * this->Y + this->Z * this->Z );
 
 	if( t > FLOAT_EPSILON )
 	{
 		float fRcpt = 1 / t;
 
-		this->fX *= fRcpt;
-		this->fY *= fRcpt;
-		this->fZ *= fRcpt;
+		this->X *= fRcpt;
+		this->Y *= fRcpt;
+		this->Z *= fRcpt;
 	}
 	else
 	{
@@ -37,56 +33,56 @@ float Vector3::Normalize( void )
 	return t;
 }
 
-float Vector3::Length( void ) const
+float Vector3::Length() const
 {
-	return sqrt( ( fX*fX ) + ( fY*fY ) + ( fZ*fZ ) );
+	return sqrt( ( X * X ) + ( Y * Y ) + ( Z * Z ) );
 }
 
-float Vector3::LengthSquared( void ) const
+float Vector3::LengthSquared() const
 {
-	return ( fX*fX ) + ( fY*fY ) + ( fZ*fZ );
+	return ( X * X ) + ( Y * Y ) + ( Z * Z );
 }
 
-float Vector3::DotProduct( const Vector3 * param ) const
+float Vector3::DotProduct( const Vector3* param ) const
 {
-	return fX*param->fX + fY*param->fY + fZ*param->fZ;
+	return X * param->X + Y * param->Y + Z * param->Z;
 }
 
-void Vector3::CrossProduct( const Vector3 * param )
+void Vector3::CrossProduct( const Vector3* param )
 {
-	float _fX = fX, _fY = fY, _fZ = fZ;
+	float _X = X, _Y = Y, _Z = Z;
 
-	fX = _fY * param->fZ - param->fY * _fZ;
-	fY = _fZ * param->fX - param->fZ * _fX;
-	fZ = _fX * param->fY - param->fX * _fY;
+	X = _Y * param->Z - param->Y * _Z;
+	Y = _Z * param->X - param->Z * _X;
+	Z = _X * param->Y - param->X * _Y;
 }
 
-Vector3 Vector3::ToRotation( void ) const
+Vector3 Vector3::ToRotation() const
 {
 	Vector3 vecRotation;
 
-	vecRotation.fZ = atan2( fY, fX );
+	vecRotation.Z = atan2( Y, X );
 
-	Vector3 vecTemp( sqrt( fX * fX + fY * fY ), fZ, 0 );
+	Vector3 vecTemp( sqrt( X * X + Y * Y ), Z, 0 );
 
 	vecTemp.Normalize();
 
-	vecRotation.fY = atan2( vecTemp.fX, vecTemp.fY ) - PI / 2;
+	vecRotation.Y = atan2( vecTemp.X, vecTemp.Y ) - PI / 2;
 
 	return vecRotation;
 }
 
-Vector3 Vector3::GetOtherAxis( void ) const
+Vector3 Vector3::GetOtherAxis() const
 {
 	Vector3 vecResult;
 
-	if( abs( fX ) > abs( fY ) )
+	if( abs( X ) > abs( Y ) )
 	{
-		vecResult = Vector3( fZ, 0, -fX );
+		vecResult = Vector3( Z, 0, -X );
 	}
 	else
 	{
-		vecResult = Vector3( 0, -fZ, fY );
+		vecResult = Vector3( 0, -Z, Y );
 	}
 
 	vecResult.Normalize();
@@ -96,104 +92,104 @@ Vector3 Vector3::GetOtherAxis( void ) const
 
 Vector3 Vector3::operator + ( const Vector3& vecRight ) const
 {
-	return Vector3( fX + vecRight.fX, fY + vecRight.fY, fZ + vecRight.fZ );
+	return Vector3( X + vecRight.X, Y + vecRight.Y, Z + vecRight.Z );
 }
 
 Vector3 Vector3::operator - ( const Vector3& vecRight ) const
 {
-	return Vector3( fX - vecRight.fX, fY - vecRight.fY, fZ - vecRight.fZ );
+	return Vector3( X - vecRight.X, Y - vecRight.Y, Z - vecRight.Z );
 }
 
 Vector3 Vector3::operator * ( const Vector3& vecRight ) const
 {
-	return Vector3( fX * vecRight.fX, fY * vecRight.fY, fZ * vecRight.fZ );
+	return Vector3( X * vecRight.X, Y * vecRight.Y, Z * vecRight.Z );
 }
 
 Vector3 Vector3::operator * ( float fRight ) const
 {
-	return Vector3( fX * fRight, fY * fRight, fZ * fRight );
+	return Vector3( X * fRight, Y * fRight, Z * fRight );
 }
 
 Vector3 Vector3::operator / ( const Vector3& vecRight ) const
 {
-	return Vector3( fX / vecRight.fX, fY / vecRight.fY, fZ / vecRight.fZ );
+	return Vector3( X / vecRight.X, Y / vecRight.Y, Z / vecRight.Z );
 }
 
 Vector3 Vector3::operator / ( float fRight ) const
 {
 	float fRcpValue = 1 / fRight;
 
-	return Vector3( fX * fRcpValue, fY * fRcpValue, fZ * fRcpValue );
+	return Vector3( X * fRcpValue, Y * fRcpValue, Z * fRcpValue );
 }
 
 Vector3 Vector3::operator - ( ) const
 {
-	return Vector3( -fX, -fY, -fZ );
+	return Vector3( -X, -Y, -Z );
 }
 
 void Vector3::operator += ( float fRight )
 {
-	fX += fRight;
-	fY += fRight;
-	fZ += fRight;
+	X += fRight;
+	Y += fRight;
+	Z += fRight;
 }
 
 void Vector3::operator += ( const Vector3& vecRight )
 {
-	fX += vecRight.fX;
-	fY += vecRight.fY;
-	fZ += vecRight.fZ;
+	X += vecRight.X;
+	Y += vecRight.Y;
+	Z += vecRight.Z;
 }
 
 void Vector3::operator -= ( float fRight )
 {
-	fX -= fRight;
-	fY -= fRight;
-	fZ -= fRight;
+	X -= fRight;
+	Y -= fRight;
+	Z -= fRight;
 }
 
 void Vector3::operator -= ( const Vector3& vecRight )
 {
-	fX -= vecRight.fX;
-	fY -= vecRight.fY;
-	fZ -= vecRight.fZ;
+	X -= vecRight.X;
+	Y -= vecRight.Y;
+	Z -= vecRight.Z;
 }
 
 void Vector3::operator *= ( float fRight )
 {
-	fX *= fRight;
-	fY *= fRight;
-	fZ *= fRight;
+	X *= fRight;
+	Y *= fRight;
+	Z *= fRight;
 }
 
 void Vector3::operator *= ( const Vector3& vecRight )
 {
-	fX *= vecRight.fX;
-	fY *= vecRight.fY;
-	fZ *= vecRight.fZ;
+	X *= vecRight.X;
+	Y *= vecRight.Y;
+	Z *= vecRight.Z;
 }
 
 void Vector3::operator /= ( float fRight )
 {
 	float fRcpValue = 1 / fRight;
-	fX *= fRcpValue;
-	fY *= fRcpValue;
-	fZ *= fRcpValue;
+	X *= fRcpValue;
+	Y *= fRcpValue;
+	Z *= fRcpValue;
 }
 
 void Vector3::operator /= ( const Vector3& vecRight )
 {
-	fX /= vecRight.fX;
-	fY /= vecRight.fY;
-	fZ /= vecRight.fZ;
+	X /= vecRight.X;
+	Y /= vecRight.Y;
+	Z /= vecRight.Z;
 }
 
-bool Vector3::operator== ( const Vector3& param ) const
+bool Vector3::operator == ( const Vector3& param ) const
 {
-	return ( ( fabs( fX - param.fX ) < FLOAT_EPSILON ) && ( fabs( fY - param.fY ) < FLOAT_EPSILON ) && ( fabs( fZ - param.fZ ) < FLOAT_EPSILON ) );
+	return ( ( fabs( X - param.X ) < FLOAT_EPSILON ) && ( fabs( Y - param.Y ) < FLOAT_EPSILON ) && ( fabs( Z - param.Z ) < FLOAT_EPSILON ) );
 }
 
-bool Vector3::operator!= ( const Vector3& param ) const
+bool Vector3::operator != ( const Vector3& param ) const
 {
-	return ( ( fabs( fX - param.fX ) >= FLOAT_EPSILON ) || ( fabs( fY - param.fY ) >= FLOAT_EPSILON ) || ( fabs( fZ - param.fZ ) >= FLOAT_EPSILON ) );
+	return ( ( fabs( X - param.X ) >= FLOAT_EPSILON ) || ( fabs( Y - param.Y ) >= FLOAT_EPSILON ) || ( fabs( Z - param.Z ) >= FLOAT_EPSILON ) );
 }
