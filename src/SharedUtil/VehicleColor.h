@@ -16,24 +16,24 @@ namespace SharedUtil
 		void            SetRGBColor                 ( uint uiSlot, Color color );
 		void            SetPaletteColor             ( uint uiSlot, uchar ucColor );
 
-		Color           GetRGBColor                 ( uint uiSlot );
-		uchar			GetPaletteColor             ( uint uiSlot );
+		Color           GetRGBColor                 ( uint uiSlot ) const;
+		uchar			GetPaletteColor             ( uint uiSlot ) const;
 
-		int             GetNumColorsUsed            ( void );
+		int             GetNumColorsUsed            ( void ) const;
 
 		static uchar    GetPaletteIndexFromRGB      ( Color color );
 		static Color    GetRGBFromPaletteIndex      ( uchar ucColor );
 
 	protected:
-		void            InvalidatePaletteColors     ( void );
-		void            ValidatePaletteColors       ( void );
-		void            InvalidateRGBColors         ( void );
-		void            ValidateRGBColors           ( void );
+		void            InvalidatePaletteColors     () const;
+		void            ValidatePaletteColors       () const;
+		void            InvalidateRGBColors         () const;
+		void            ValidateRGBColors           () const;
 
-		Color           m_RGBColors[ 4 ];
-		uchar		    m_ucPaletteColors[ 4 ];
-		bool            m_bPaletteColorsWrong;
-		bool            m_bRGBColorsWrong;
+		mutable Color   m_RGBColors[ 4 ];
+		mutable uchar	m_ucPaletteColors[ 4 ];
+		mutable bool    m_bPaletteColorsWrong;
+		mutable bool    m_bRGBColorsWrong;
 	};
 };
 #endif

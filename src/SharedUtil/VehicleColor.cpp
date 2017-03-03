@@ -76,7 +76,7 @@ void VehicleColor::SetPaletteColor( uint uiSlot, uchar ucColor )
 }
 
 // Get a slot colour as a palette index
-uchar VehicleColor::GetPaletteColor( uint uiSlot )
+uchar VehicleColor::GetPaletteColor( uint uiSlot ) const
 {
 	this->ValidatePaletteColors();
 
@@ -86,7 +86,7 @@ uchar VehicleColor::GetPaletteColor( uint uiSlot )
 }
 
 // Get a slot colour as an RGB colour
-Color VehicleColor::GetRGBColor( uint uiSlot )
+Color VehicleColor::GetRGBColor( uint uiSlot ) const
 {
 	this->ValidateRGBColors();
 
@@ -96,7 +96,7 @@ Color VehicleColor::GetRGBColor( uint uiSlot )
 }
 
 //  Can return: 1,2,3, or 4
-int VehicleColor::GetNumColorsUsed( void )
+int VehicleColor::GetNumColorsUsed( void ) const
 {
 	// Find last unblack
 	int i;
@@ -116,21 +116,21 @@ int VehicleColor::GetNumColorsUsed( void )
 
 
 // Switching to RGB mode
-void VehicleColor::InvalidatePaletteColors( void )
+void VehicleColor::InvalidatePaletteColors() const
 {
 	this->m_bRGBColorsWrong = false;
 	this->m_bPaletteColorsWrong = true;
 }
 
 // Switching to palette mode
-void VehicleColor::InvalidateRGBColors( void )
+void VehicleColor::InvalidateRGBColors() const
 {
 	this->m_bPaletteColorsWrong = false;
 	this->m_bRGBColorsWrong = true;
 }
 
 // Ensure switched
-void VehicleColor::ValidateRGBColors( void )
+void VehicleColor::ValidateRGBColors() const
 {
 	if( this->m_bRGBColorsWrong )
 	{
@@ -144,7 +144,7 @@ void VehicleColor::ValidateRGBColors( void )
 }
 
 // Ensure switched
-void VehicleColor::ValidatePaletteColors( void )
+void VehicleColor::ValidatePaletteColors() const
 {
 	if( this->m_bPaletteColorsWrong )
 	{
