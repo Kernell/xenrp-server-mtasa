@@ -176,7 +176,7 @@ Element* Element::GetAttachedTo() const
 
 ColShape* Element::GetColShape() const
 {
-	return dynamic_cast< ColShape* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetElementColShape( LuaVM, LuaUserdata ) ) );
+	return this->ElementManager->FindOrCreate< ColShape* >( Lua::Bindings::GetElementColShape( LuaVM, LuaUserdata ) );
 }
 
 uchar Element::GetAlpha() const
@@ -231,7 +231,7 @@ bool Element::GetAttachedOffsets( Math::Vector3& position, Math::Vector3& rotati
 
 Player* Element::GetSyncer() const
 {
-	return dynamic_cast< Player* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetElementSyncer( LuaVM, LuaUserdata ) ) );
+	return this->ElementManager->FindOrCreate< Player* >( Lua::Bindings::GetElementSyncer( LuaVM, LuaUserdata ) );
 }
 
 bool Element::GetCollisionsEnabled() const
