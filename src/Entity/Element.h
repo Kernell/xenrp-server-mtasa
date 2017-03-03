@@ -30,6 +30,7 @@ class Vehicle;
 
 class ElementManager;
 
+using namespace Math;
 using namespace SharedUtil;
 
 class Element
