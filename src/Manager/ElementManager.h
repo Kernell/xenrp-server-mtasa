@@ -138,6 +138,16 @@ public:
 							        
 	Element*                        GetFromList         ( PVOID userdata );
 
+	template< typename T > T        FindOrCreate( PVOID userdata )
+	{
+		return dynamic_cast< T >( FindOrCreate( userdata ) );
+	}
+
+	template< typename T > T        GetFromList( PVOID userdata )
+	{
+		return dynamic_cast< T >( GetFromList( userdata ) );
+	}
+
 	void							AddToList           ( Element* element );
 	void							RemoveFromList      ( Element* element );
 

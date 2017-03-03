@@ -191,7 +191,7 @@ bool Ped::IsFrozen() const
 
 Vehicle* Ped::GetOccupiedVehicle() const
 {
-	return dynamic_cast< Vehicle* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetPedOccupiedVehicle( LuaVM, LuaUserdata ) ) );
+	return this->ElementManager->FindOrCreate< Vehicle* >( Lua::Bindings::GetPedOccupiedVehicle( LuaVM, LuaUserdata ) );
 }
 
 uint Ped::GetOccupiedVehicleSeat() const
