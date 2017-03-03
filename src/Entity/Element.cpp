@@ -289,7 +289,7 @@ bool Element::RemoveData( const string& key )
 
 bool Element::SetParent( Element* target )
 {
-	return Lua::Bindings::SetElementParent( LuaVM, LuaUserdata, target );
+	return Lua::Bindings::SetElementParent( LuaVM, LuaUserdata, target->GetLuaUserdata() );
 }
 
 bool Element::SetPosition( const Math::Vector3& position, bool warp )
@@ -324,12 +324,12 @@ bool Element::SetDimension( int dimension )
 
 bool Element::Attach( Element* target, const Math::Vector3& vecPosition, const Math::Vector3& vecRotation )
 {
-	return Lua::Bindings::AttachElements( LuaVM, LuaUserdata, target, vecPosition, vecRotation );
+	return Lua::Bindings::AttachElements( LuaVM, LuaUserdata, target->GetLuaUserdata(), vecPosition, vecRotation );
 }
 
 bool Element::Detach( Element* target )
 {
-	return Lua::Bindings::DetachElements( LuaVM, LuaUserdata, target );
+	return Lua::Bindings::DetachElements( LuaVM, LuaUserdata, target ? target->GetLuaUserdata() : nullptr );
 }
 
 bool Element::SetAlpha( int alpha )
@@ -359,7 +359,7 @@ bool Element::SetAttachedOffsets( const Math::Vector3& position, const Math::Vec
 
 bool Element::SetSyncer( Player* player )
 {
-	return Lua::Bindings::SetElementSyncer( LuaVM, LuaUserdata, player );
+	return Lua::Bindings::SetElementSyncer( LuaVM, LuaUserdata, player->GetLuaUserdata() );
 }
 
 bool Element::SetCollisionsEnabled( bool enabled )
