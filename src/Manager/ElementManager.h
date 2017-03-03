@@ -140,12 +140,12 @@ public:
 
 	template< typename T > T        FindOrCreate( PVOID userdata )
 	{
-		return dynamic_cast< T >( FindOrCreate( userdata ) );
+		return userdata ? dynamic_cast< T >( FindOrCreate( userdata ) ) : nullptr;
 	}
 
 	template< typename T > T        GetFromList( PVOID userdata )
 	{
-		return dynamic_cast< T >( GetFromList( userdata ) );
+		return userdata ? dynamic_cast< T >( GetFromList( userdata ) ) : nullptr;
 	}
 
 	void							AddToList           ( Element* element );
@@ -211,7 +211,7 @@ public:
 
 private:
 	Module*                         Module;
-	list< Element* >                List;
+	vector< Element* >              List;
 };
 
 #endif

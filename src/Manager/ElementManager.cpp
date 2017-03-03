@@ -140,6 +140,11 @@ void ElementManager::DeleteAll( void )
 
 Element* ElementManager::Create( PVOID userdata )
 {
+	if( userdata == nullptr )
+	{
+		return nullptr;
+	}
+
 	const string& typeName = Lua::Bindings::GetElementType( this->Module->GetLua(), userdata );
 	
 	Element* element = nullptr;
@@ -239,6 +244,11 @@ Element* ElementManager::Create( PVOID userdata )
 
 Element* ElementManager::FindOrCreate( PVOID userdata )
 {
+	if( userdata == nullptr )
+	{
+		return nullptr;
+	}
+
 	Element* element = this->GetFromList( userdata );
 
 	if( !element )
@@ -256,7 +266,17 @@ void ElementManager::AddToList( Element* element )
 
 void ElementManager::RemoveFromList( Element* element )
 {
-	this->List.remove( element );
+	vector< Element* >::iterator iter = this->List.begin();
+
+	for( ; iter != this->List.end(); ++iter )
+	{
+		if( (*iter) == element )
+		{
+			this->List.erase( iter );
+
+			break;
+		}
+	}
 }
 
 void ElementManager::ElementDestroy( EventArgs* event )
