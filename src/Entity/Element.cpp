@@ -22,19 +22,21 @@ Element::Element( PVOID luaUserdata ) :
 	LuaUserdata( luaUserdata ),
 	ID( NULL )
 {
-	this->LuaVM = g_Module->GetLua();
+	this->LuaVM          = g_Module->GetLua();
+	this->ElementManager = g_Module->GetElementManager();
 
-	g_Module->GetElementManager()->AddToList( this );
+	this->ElementManager->AddToList( this );
 }
 
 Element::~Element()
 {
-	g_Module->GetElementManager()->RemoveFromList( this );
+	this->ElementManager->RemoveFromList( this );
 
 	this->Destroy();
 
-	this->LuaUserdata = nullptr;
-	this->LuaVM       = nullptr;
+	this->LuaUserdata    = nullptr;
+	this->ElementManager = nullptr;
+	this->LuaVM          = nullptr;
 }
 
 void Element::DoPulse()
@@ -52,7 +54,7 @@ void Element::Destroy()
 
 Element* Element::Clone( const Math::Vector3& vecPosition, bool cloneChildren ) const
 {
-	return new Element( Lua::Bindings::CloneElement( LuaVM, LuaUserdata, vecPosition, cloneChildren ) );
+	return this->ElementManager->FindOrCreate( Lua::Bindings::CloneElement( LuaVM, LuaUserdata, vecPosition, cloneChildren ) );
 }
 
 bool Element::IsValid() const
@@ -62,7 +64,7 @@ bool Element::IsValid() const
 
 Element* Element::GetChild( int index ) const
 {
-	return new Element( Lua::Bindings::GetElementChild( LuaVM, LuaUserdata, index ) );
+	return this->ElementManager->FindOrCreate( Lua::Bindings::GetElementChild( LuaVM, LuaUserdata, index ) );
 }
 
 int Element::GetChildrenCount() const
@@ -87,7 +89,7 @@ LuaArguments Element::GetAllData() const
 
 Element* Element::GetParent() const
 {
-	return new Element( Lua::Bindings::GetElementParent( LuaVM, LuaUserdata ) );
+	return this->ElementManager->FindOrCreate( Lua::Bindings::GetElementParent( LuaVM, LuaUserdata ) );
 }
 
 Math::Vector3 Element::GetPosition() const
@@ -169,12 +171,12 @@ bool Element::IsAttached() const
 
 Element* Element::GetAttachedTo() const
 {
-	return new Element( Lua::Bindings::GetElementAttachedTo( LuaVM, LuaUserdata ) );
+	return this->ElementManager->FindOrCreate( Lua::Bindings::GetElementAttachedTo( LuaVM, LuaUserdata ) );
 }
 
 ColShape* Element::GetColShape() const
 {
-	return new ColShape( Lua::Bindings::GetElementColShape( LuaVM, LuaUserdata ) );
+	return dynamic_cast< ColShape* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetElementColShape( LuaVM, LuaUserdata ) ) );
 }
 
 uchar Element::GetAlpha() const
@@ -229,7 +231,7 @@ bool Element::GetAttachedOffsets( Math::Vector3& position, Math::Vector3& rotati
 
 Player* Element::GetSyncer() const
 {
-	return new Player( Lua::Bindings::GetElementSyncer( LuaVM, LuaUserdata ) );
+	return dynamic_cast< Player* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetElementSyncer( LuaVM, LuaUserdata ) ) );
 }
 
 bool Element::GetCollisionsEnabled() const
@@ -253,7 +255,7 @@ Element* Element::GetLowLod() const
 	if( !Lua::Bindings::GetLowLodElement( LuaVM, LuaUserdata, value ) )
 		return nullptr;
 
-	return new Element( value );
+	return this->ElementManager->FindOrCreate( value );
 }
 
 bool Element::IsLowLod() const

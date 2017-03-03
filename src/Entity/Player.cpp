@@ -53,7 +53,7 @@ bool Player::IsMuted() const
 
 Team* Player::GetTeam() const
 {
-	return new Team( Lua::Bindings::GetPlayerTeam( LuaVM, LuaUserdata ) );
+	return dynamic_cast< Team* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetPlayerTeam( LuaVM, LuaUserdata ) ) );
 }
 
 uint Player::GetWantedLevel() const
@@ -149,7 +149,7 @@ string Player::GetIP() const
 
 Account* Player::GetAccount() const
 {
-	return new Account( Lua::Bindings::GetPlayerAccount( LuaVM, LuaUserdata ) );
+	return dynamic_cast< Account* >( this->ElementManager->FindOrCreate( Lua::Bindings::GetPlayerAccount( LuaVM, LuaUserdata ) ) );
 }
 
 string Player::GetVersion() const
