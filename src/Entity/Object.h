@@ -20,8 +20,15 @@ class Object;
 class Object : public Element
 {
 public:
-												Object                     ( PVOID luaUserdata );
-	virtual                                     ~Object                    ();
+										Object                     ( PVOID luaUserdata );
+										Object                     ( ushort modelID, const Vector3& position = Vector3(), const Vector3& rotation = Vector3(), bool isLowLod = false );
+	virtual                             ~Object                    ();
+
+	virtual Vector3                     GetScale                   ();
+
+	virtual bool                        SetScale                   ( const Vector3& scale );
+	virtual bool                        Move                       ( ulong time, const Vector3& position, const Vector3& rotation, const string& easingType, float easingPeriod, float easingAmplitude, float easingOvershoot );
+	virtual bool                        Stop                       ();
 };
 
 #endif
