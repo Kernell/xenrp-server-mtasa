@@ -241,3 +241,13 @@ bool Player::TakeScreenShot( int width, int height, const string& tag, int quali
 {
 	return Lua::Bindings::TakePlayerScreenShot( LuaVM, LuaUserdata, width, height, tag, quality, maxBandwith );
 }
+
+bool Player::TriggerClientEvent( const string& name, Element* source, LuaArguments& arguments )
+{
+	if( source && source->IsValid() )
+	{
+		return Lua::Bindings::TriggerClientEvent( LuaVM, LuaUserdata, name.c_str(), source, arguments );
+	}
+
+	return false;
+}

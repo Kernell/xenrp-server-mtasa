@@ -59,6 +59,8 @@ public:
 	virtual bool                        SetName                            ( const string& name );
 	virtual bool                        DetonateSatchels                   ();
 	virtual bool                        TakeScreenShot                     ( int width, int height, const string& tag = "", int quality = 30, int maxBandwith = 5000 );
+
+	virtual bool                        TriggerClientEvent                 ( const string& name, Element* source, LuaArguments& arguments );
 };
 
 struct PlayerModInfo
