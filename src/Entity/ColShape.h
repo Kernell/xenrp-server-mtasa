@@ -20,8 +20,16 @@ class ColShape;
 class ColShape : public Element
 {
 public:
-												ColShape                     ( PVOID luaUserdata );
-	virtual                                     ~ColShape                    ();
+			ColShape   ( PVOID luaUserdata );
+
+	static  ColShape* CreateCircle      ( const Vector2& position, float radius );
+	static  ColShape* CreateCuboid      ( const Vector3& position, const Vector3& size );
+	static  ColShape* CreateSphere      ( const Vector3& position, float radius );
+	static  ColShape* CreateRectangle   ( const Vector2& position, const Vector2& size );
+	static  ColShape* CreatePolygon     ( const vector< Vector2 >& pointList );
+	static  ColShape* CreateTube        ( const Vector3& position, float radius, float height );
+
+	virtual ~ColShape  ();
 };
 
 #endif
