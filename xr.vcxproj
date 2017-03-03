@@ -137,6 +137,7 @@
     <ClInclude Include="src\SharedUtil\Color.h" />
     <ClInclude Include="src\SharedUtil\SharedUtil.h" />
     <ClInclude Include="src\SharedUtil\VehicleColor.h" />
+    <ClInclude Include="src\SharedUtil\VehicleWheelsState.h" />
     <ClInclude Include="src\StdInc.h" />
   </ItemGroup>
   <ItemGroup>
