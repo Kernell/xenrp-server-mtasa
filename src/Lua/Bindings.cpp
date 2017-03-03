@@ -1303,7 +1303,7 @@ bool Bindings::SetElementDimension( lua_State* pLuaVM, PVOID pUserData, int iDim
 	return false;
 }
 
-bool Bindings::AttachElements( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget, Math::Vector3& vecPosition, Math::Vector3& vecRotation )
+bool Bindings::AttachElements( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget, const Math::Vector3& vecPosition, const Math::Vector3& vecRotation )
 {
 	LuaArguments pLuaArguments;
 
@@ -1416,7 +1416,7 @@ bool Bindings::SetElementModel( lua_State* pLuaVM, PVOID pUserData, int iModel )
 	return false;
 }
 
-bool Bindings::SetElementAttachedOffsets( lua_State* pLuaVM, PVOID pUserData, Math::Vector3& vecPosition, Math::Vector3& vecRotation )
+bool Bindings::SetElementAttachedOffsets( lua_State* pLuaVM, PVOID pUserData, const Math::Vector3& vecPosition, const Math::Vector3& vecRotation )
 {
 	LuaArguments pLuaArguments;
 

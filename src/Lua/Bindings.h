@@ -110,13 +110,13 @@ namespace Lua
 		static bool                     SetElementVisibleTo                 ( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget, bool bVisible );
 		static bool                     SetElementInterior                  ( lua_State* pLuaVM, PVOID pUserData, int iInterior );
 		static bool                     SetElementDimension                 ( lua_State* pLuaVM, PVOID pUserData, int iDimension );
-		static bool                     AttachElements                      ( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget, Math::Vector3& vecPosition, Math::Vector3& vecRotation );
+		static bool                     AttachElements                      ( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget, const Math::Vector3& vecPosition, const Math::Vector3& vecRotation );
 		static bool                     DetachElements                      ( lua_State* pLuaVM, PVOID pUserData, PVOID pTarget = NULL );
 		static bool                     SetElementAlpha                     ( lua_State* pLuaVM, PVOID pUserData, int iAlpha );
 		static bool                     SetElementDoubleSided               ( lua_State* pLuaVM, PVOID pUserData, bool bDoubleSided );
 		static bool                     SetElementHealth                    ( lua_State* pLuaVM, PVOID pUserData, float fHealth );
 		static bool                     SetElementModel                     ( lua_State* pLuaVM, PVOID pUserData, int iModel );
-		static bool                     SetElementAttachedOffsets           ( lua_State* pLuaVM, PVOID pUserData, Math::Vector3& vecPosition, Math::Vector3& vecRotation );
+		static bool                     SetElementAttachedOffsets           ( lua_State* pLuaVM, PVOID pUserData, const Math::Vector3& vecPosition, const Math::Vector3& vecRotation );
 		static bool                     SetElementSyncer                    ( lua_State* pLuaVM, PVOID pUserData, PVOID pPlayer );
 		static bool                     SetElementCollisionsEnabled         ( lua_State* pLuaVM, PVOID pUserData, bool bEnabled );
 		static bool                     SetElementFrozen                    ( lua_State* pLuaVM, PVOID pUserData, bool bFrozen );
