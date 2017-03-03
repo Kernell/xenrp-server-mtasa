@@ -76,7 +76,7 @@ unsigned long MySQL::AffectedRows()
 
 bool MySQL::ChangeUser( const string& username, const string& password, const string & database )
 {
-	return mysql_change_user( this->Handle, username.c_str(), password.c_str(), database.c_str() );
+	return mysql_change_user( this->Handle, username.c_str(), password.c_str(), database.c_str() ) == TRUE;
 }
 
 void MySQL::GetCharacterSetInfo( MY_CHARSET_INFO* cs ) const
@@ -154,7 +154,7 @@ MySQLResult* MySQL::UnbufferedQuery( const string& query )
 
 bool MySQL::SetCharacterSet( const string& csname )
 {
-	return mysql_set_character_set( this->Handle, csname.c_str() );
+	return mysql_set_character_set( this->Handle, csname.c_str() ) == 0;
 }
 
 string MySQL::Stat()
