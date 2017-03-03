@@ -26,6 +26,9 @@ class Player;
 class Account;
 class ColShape;
 class Team;
+class Vehicle;
+
+class ElementManager;
 
 using namespace SharedUtil;
 
@@ -41,6 +44,7 @@ public:
 	virtual void                                DoPulse                     ();
 	virtual void                                Save                        () const;
 
+	inline ElementManager*                      GetElementManager           () const                  { return this->ElementManager; }
 	inline PVOID                                GetLuaUserdata              () const                  { return this->LuaUserdata; }
 	unsigned long long                          GetID                       () const                  { return this->ID; }
 
@@ -105,6 +109,7 @@ public:
 protected:
 	PVOID                                       LuaUserdata;
 	lua_State*                                  LuaVM;
+	ElementManager*                             ElementManager;
 };
 
 #endif
