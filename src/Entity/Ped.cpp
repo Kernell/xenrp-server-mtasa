@@ -82,11 +82,7 @@ Element* Ped::GetTarget() const
 
 int Ped::GetWeapon( int weaponSlot ) const
 {
-	int value;
-
-	Lua::Bindings::GetPedWeapon( LuaVM, LuaUserdata, value );
-
-	return value;
+	return Lua::Bindings::GetPedWeapon( LuaVM, LuaUserdata, weaponSlot );
 }
 
 bool Ped::GetClothes( uchar type, string& outTexture, string& outModel ) const
