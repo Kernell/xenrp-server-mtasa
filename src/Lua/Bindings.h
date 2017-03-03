@@ -151,7 +151,7 @@ namespace Lua
 		static bool					    SetPlayerMoney                      ( lua_State* pLuaVM, PVOID pUserData, int iAmount, bool bInstant = false );
 		static bool					    GivePlayerMoney                     ( lua_State* pLuaVM, PVOID pUserData, int iAmount );
 		static bool					    TakePlayerMoney                     ( lua_State* pLuaVM, PVOID pUserData, int iAmount );
-		static bool					    SpawnPlayer                         ( lua_State* pLuaVM, PVOID pUserData, Math::Vector3& vecPosition, int iRotation = 0, int iSkinID = 0, int iInterior = 0, int iDimension = 0, PVOID theTeam = NULL );
+		static bool					    SpawnPlayer                         ( lua_State* pLuaVM, PVOID pUserData, const Math::Vector3& vecPosition, int iRotation = 0, int iSkinID = 0, int iInterior = 0, int iDimension = 0, PVOID theTeam = NULL );
 		static bool					    ShowPlayerHudComponent              ( lua_State* pLuaVM, PVOID pUserData, string sComponent, bool bShow );
 		static bool					    SetPlayerWantedLevel                ( lua_State* pLuaVM, PVOID pUserData, int iLevel );
 		static bool					    ForcePlayerMap                      ( lua_State* pLuaVM, PVOID pUserData, bool bForceOn );

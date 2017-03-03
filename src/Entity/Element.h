@@ -19,10 +19,15 @@ class Element;
 #include "Lua/LuaArguments.h"
 #include "Math/Vector2.h"
 #include "Math/Vector3.h"
+#include "SharedUtil/Color.h"
 
-class ColShape;
 class Ped;
 class Player;
+class Account;
+class ColShape;
+class Team;
+
+using namespace SharedUtil;
 
 class Element
 {
@@ -97,7 +102,7 @@ public:
 	virtual bool                                SetFrozen                   ( bool frozen );
 	virtual bool                                SetLowLod                   ( bool enabled );
 
-private:
+protected:
 	PVOID                                       LuaUserdata;
 	lua_State*                                  LuaVM;
 };

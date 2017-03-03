@@ -20,8 +20,45 @@ class Player;
 class Player : public Ped
 {
 public:
-												Player                     ( PVOID luaUserdata );
-	virtual                                     ~Player                    ();
+										Player                             ( PVOID luaUserdata );
+	virtual                             ~Player                            ();
+
+public:
+	virtual uint                        GetPing                            () const;
+	virtual long                        GetMoney                           () const;
+	virtual bool                        IsMuted                            () const;
+	virtual Team*                       GetTeam                            () const;
+	virtual uint                        GetWantedLevel                     () const;
+	virtual uint                        GetIdleTime                        () const;
+	virtual bool					    IsMapForced                        () const;
+	virtual string                      GetNametagText                     () const;
+	virtual Color                       GetNametagColor                    () const;
+	virtual bool                        IsNametagShowing                   () const;
+	virtual string                      GetSerial                          () const;
+	virtual string                      GetUserName                        () const;
+	virtual uchar                       GetBlurLevel                       () const;
+	virtual string                      GetName                            () const;
+	virtual string                      GetIP                              () const;
+	virtual Account*                    GetAccount                         () const;
+	virtual string                      GetVersion                         () const;
+	virtual ArgumentsMap		        GetACInfo				           () const;
+
+	virtual bool                        SetMoney                           ( int amount, bool instant = false );
+	virtual bool                        GiveMoney                          ( int amount );
+	virtual bool                        TakeMoney                          ( int amount );
+	virtual bool                        Spawn                              ( const Math::Vector3& position, int rotation = 0, int skinID = 0, int interior = 0, int dimension = 0, Team* team = nullptr );
+	virtual bool                        ShowHudComponent                   ( const string& component, bool show );
+	virtual bool                        SetWantedLevel                     ( int level );
+	virtual bool                        ForceMap                           ( bool forceOn );
+	virtual bool                        SetNametagText                     ( const string& text );
+	virtual bool                        SetNametagColor                    ( const Color& color );
+	virtual bool                        SetNametagShowing                  ( bool showing );
+	virtual bool                        SetMuted                           ( bool muted );
+	virtual bool                        SetBlurLevel                       ( int level );
+	virtual bool                        Redirect                           ( const char* serverIP, int serverPort, const char* serverPassword );
+	virtual bool                        SetName                            ( const string& name );
+	virtual bool                        DetonateSatchels                   ();
+	virtual bool                        TakeScreenShot                     ( int width, int height, const string& tag = "", int quality = 30, int maxBandwith = 5000 );
 };
 
 struct PlayerModInfo

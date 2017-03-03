@@ -1957,7 +1957,7 @@ bool Bindings::TakePlayerMoney( lua_State* pLuaVM, PVOID pUserData, int iAmount 
 	return false;
 }
 
-bool Bindings::SpawnPlayer( lua_State* pLuaVM, PVOID pUserData, Math::Vector3& vecPosition, int iRotation, int iSkinID, int iInterior, int iDimension, PVOID pTeam )
+bool Bindings::SpawnPlayer( lua_State* pLuaVM, PVOID pUserData, const Math::Vector3& vecPosition, int iRotation, int iSkinID, int iInterior, int iDimension, PVOID pTeam )
 {
 	LuaArguments pLuaArguments;
 
