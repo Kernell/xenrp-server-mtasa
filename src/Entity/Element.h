@@ -111,6 +111,10 @@ public:
 	virtual bool                                OutputChatBox               ( const string& text, const Color& color = 0xFFE7D9B0, bool colorCoded = false );
 	virtual bool                                OutputConsole               ( const string& text );
 
+	virtual bool                                ShowCursor                  ( bool show, bool toggleControls );
+	virtual bool                                ShowChat                    ( bool show );
+	virtual bool                                ResetMapInfo                ();
+
 protected:
 	PVOID                                       LuaUserdata;
 	lua_State*                                  LuaVM;

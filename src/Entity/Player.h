@@ -16,6 +16,7 @@ class Player;
 #define __PLAYER_H
 
 #include "Ped.h"
+#include "Ban.h"
 
 class Player : public Ped
 {
@@ -61,6 +62,36 @@ public:
 	virtual bool                        TakeScreenShot                     ( int width, int height, const string& tag = "", int quality = 30, int maxBandwith = 5000 );
 
 	virtual bool                        TriggerClientEvent                 ( const string& name, Element* source, LuaArguments& arguments );
+
+	virtual bool						LogIn                              ( Account* account, const string& password );
+	virtual bool						LogOut                             ();
+
+	virtual bool                        Kick                               ( string responsible = "Console", string reason = "" );
+	virtual ::Ban*                      Ban                                ( bool ip, bool username, bool serial, Element* responsible = nullptr, string responsibleName = "Console", string reason = "", time_t unban = 0 );
+
+	virtual bool                        IsCursorShowing                    () const;
+
+	virtual bool                        GetCameraMatrix                    ( Vector3& position, Vector3& lookAt, float& roll, float& FOV ) const;
+	virtual Element*                    GetCameraTarget                    () const;
+	virtual uchar                       GetCameraInterior                  () const;
+
+	virtual bool                        SetCameraMatrix                    ( const Vector3& position, Vector3& lookAt, float roll, float FOV );
+	virtual bool                        SetCameraTarget                    ( Element* target );
+	virtual bool                        SetCameraInterior                  ( uchar interior );
+	virtual bool                        FadeCamera                         ( bool fadeIn, float fadeTime, const Color& color );
+
+///	virtual bool                        BindKey                            ( const string& key, const string& hitState, const CLuaFunctionRef& iLuaFunction, CLuaArguments& Arguments );
+	virtual bool                        BindKey                            ( const string& key, const string& hitState, const string& commandName, const char* arguments = nullptr );
+///	virtual bool                        UnbindKey                          ( const string& key, const string& hitState = NULL, const CLuaFunctionRef& iLuaFunction = CLuaFunctionRef() );
+	virtual bool                        UnbindKey                          ( const string& key, const string& hitState, const string& commandName );
+///	virtual bool                        IsKeyBound                         ( const string& key, const string& hitState, const CLuaFunctionRef& iLuaFunction, bool& bBound );
+
+	virtual bool                        GetControlState                    ( const string& control );
+	virtual bool                        IsControlEnabled                   ( const string& control );
+
+	virtual bool                        SetControlState                    ( const string& control, bool state );
+	virtual bool                        ToggleControl                      ( const string& control, bool enabled );
+	virtual bool                        ToggleAllControls                  ( bool GTAControls, bool MTAControls, bool enabled );
 };
 
 struct PlayerModInfo

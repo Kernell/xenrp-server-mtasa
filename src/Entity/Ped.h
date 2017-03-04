@@ -68,6 +68,11 @@ public:
 	virtual bool                        SetHeadless                     ( bool isHeadless );
 	virtual bool                        SetFrozen                       ( bool isFrozen );
 	virtual bool                        ReloadWeapon                    ();
+
+	virtual bool                        GiveWeapon                      ( WeaponType weapon, ushort ammo, bool setAsCurrent = false );
+	virtual bool                        TakeWeapon                      ( WeaponType weapon, ushort ammo = 9999 );
+	virtual bool                        TakeAllWeapons                  ();
+	virtual bool                        SetWeaponAmmo                   ( WeaponType weapon, ushort ammo, ushort ammoInClip );
 };
 
 #endif

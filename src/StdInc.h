@@ -95,4 +95,5 @@ typedef void*               PVOID;
 
 #include "SharedUtil/Color.h"
 #include "SharedUtil/VehicleColor.h"
+#include "SharedUtil/WeaponType.h"
 #include "SharedUtil/SharedUtil.h"

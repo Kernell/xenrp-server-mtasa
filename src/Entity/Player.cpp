@@ -251,3 +251,116 @@ bool Player::TriggerClientEvent( const string& name, Element* source, LuaArgumen
 
 	return false;
 }
+
+bool Player::LogIn( Account* account, const string& password )
+{
+	return Lua::Bindings::LogIn( LuaVM, LuaUserdata, account->GetLuaUserdata(), password.c_str() );
+}
+
+bool Player::LogOut()
+{
+	return Lua::Bindings::LogOut( LuaVM, LuaUserdata );
+}
+
+bool Player::Kick( string responsible, string reason )
+{
+	return Lua::Bindings::KickPlayer( LuaVM, LuaUserdata, responsible, reason );
+}
+
+::Ban* Player::Ban( bool ip, bool username, bool serial, Element* responsible, string responsibleName, string reason, time_t unban )
+{
+	PVOID userdata = Lua::Bindings::BanPlayer( LuaVM, LuaUserdata, ip, username, serial, responsible->GetLuaUserdata(), responsibleName, reason, unban );
+
+	return this->ElementManager->FindOrCreate< ::Ban* >( userdata );
+}
+
+bool Player::IsCursorShowing() const
+{
+	bool value;
+
+	Lua::Bindings::IsCursorShowing( LuaVM, LuaUserdata, value );
+
+	return value;
+}
+
+bool Player::GetCameraMatrix( Vector3& position, Vector3& lookAt, float& roll, float& FOV ) const
+{
+	return Lua::Bindings::GetCameraMatrix( LuaVM, LuaUserdata, position, lookAt, roll, FOV );
+}
+
+Element* Player::GetCameraTarget() const
+{
+	return this->ElementManager->FindOrCreate( Lua::Bindings::GetCameraTarget( LuaVM, LuaUserdata ) );
+}
+
+uchar Player::GetCameraInterior() const
+{
+	uchar value;
+
+	Lua::Bindings::GetCameraInterior( LuaVM, LuaUserdata, value );
+
+	return value;
+}
+
+bool Player::SetCameraMatrix( const Vector3& position, Vector3& lookAt, float roll, float FOV )
+{
+	return Lua::Bindings::SetCameraMatrix( LuaVM, LuaUserdata, position, lookAt, roll, FOV );
+}
+
+bool Player::SetCameraTarget( Element* target )
+{
+	return Lua::Bindings::SetCameraTarget( LuaVM, LuaUserdata, target->GetLuaUserdata() );
+}
+
+bool Player::SetCameraInterior( uchar interior )
+{
+	return Lua::Bindings::SetCameraInterior( LuaVM, LuaUserdata, interior );
+}
+
+bool Player::FadeCamera( bool fadeIn, float fadeTime, const Color& color )
+{
+	return Lua::Bindings::FadeCamera( LuaVM, LuaUserdata, fadeIn, fadeTime, color.R, color.G, color.B );
+}
+
+bool Player::BindKey( const string& key, const string& hitState, const string& commandName, const char* arguments )
+{
+	return Lua::Bindings::BindKey( LuaVM, LuaUserdata, key.c_str(), hitState.c_str(), commandName.c_str(), arguments );
+}
+
+bool Player::UnbindKey( const string& key, const string& hitState, const string& commandName )
+{
+	return Lua::Bindings::UnbindKey( LuaVM, LuaUserdata, key.c_str(), hitState.c_str(), commandName.c_str() );
+}
+
+bool Player::GetControlState( const string& control )
+{
+	bool value;
+	
+	Lua::Bindings::GetControlState( LuaVM, LuaUserdata, control.c_str(), value );
+
+	return value;
+}
+
+bool Player::IsControlEnabled( const string& control )
+{
+	bool value;
+
+	Lua::Bindings::IsControlEnabled( LuaVM, LuaUserdata, control.c_str(), value );
+
+	return value;
+}
+
+bool Player::SetControlState( const string& control, bool state )
+{
+	return Lua::Bindings::SetControlState( LuaVM, LuaUserdata, control.c_str(), state );
+}
+
+bool Player::ToggleControl( const string& control, bool enabled )
+{
+	return Lua::Bindings::SetControlState( LuaVM, LuaUserdata, control.c_str(), enabled );
+}
+
+bool Player::ToggleAllControls( bool GTAControls, bool MTAControls, bool enabled )
+{
+	return Lua::Bindings::ToggleAllControls( LuaVM, LuaUserdata, GTAControls, MTAControls, enabled );
+}

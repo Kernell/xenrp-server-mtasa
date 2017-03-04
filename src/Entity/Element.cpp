@@ -391,3 +391,18 @@ bool Element::OutputConsole( const string& text )
 {
 	return Lua::Bindings::OutputConsole( LuaVM, text.c_str(), LuaUserdata );
 }
+
+bool Element::ShowCursor( bool show, bool toggleControls )
+{
+	return Lua::Bindings::ShowCursor( LuaVM, LuaUserdata, show, toggleControls );
+}
+
+bool Element::ShowChat( bool show )
+{
+	return Lua::Bindings::ShowChat( LuaVM, LuaUserdata, show );
+}
+
+bool Element::ResetMapInfo()
+{
+	return Lua::Bindings::ResetMapInfo( LuaVM, LuaUserdata );
+}

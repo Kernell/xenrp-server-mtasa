@@ -312,3 +312,23 @@ bool Ped::ReloadWeapon()
 {
 	return Lua::Bindings::ReloadPedWeapon( LuaVM, LuaUserdata );
 }
+
+bool Ped::GiveWeapon( WeaponType weapon, ushort ammo, bool setAsCurrent )
+{
+	return Lua::Bindings::GiveWeapon( LuaVM, LuaUserdata, weapon, ammo, setAsCurrent );
+}
+
+bool Ped::TakeWeapon( WeaponType weapon, ushort ammo )
+{
+	return Lua::Bindings::TakeWeapon( LuaVM, LuaUserdata, weapon, ammo );
+}
+
+bool Ped::TakeAllWeapons()
+{
+	return Lua::Bindings::TakeAllWeapons( LuaVM, LuaUserdata );
+}
+
+bool Ped::SetWeaponAmmo( WeaponType weapon, ushort ammo, ushort ammoInClip )
+{
+	return Lua::Bindings::SetWeaponAmmo( LuaVM, LuaUserdata, weapon, ammo, ammoInClip );
+}
