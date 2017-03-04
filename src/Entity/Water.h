@@ -20,8 +20,19 @@ class Water;
 class Water : public Element
 {
 public:
-												Water                     ( PVOID luaUserdata );
-	virtual                                     ~Water                    ();
+									Water                     ( PVOID luaUserdata );
+	                                Water                     ( Vector3* v1, Vector3* v2, Vector3* v3, Vector3* v4, bool shallow );
+	virtual                         ~Water                    ();
+
+	virtual bool                    SetLevel			      ( float level );
+///	virtual bool                    SetAllLevel	              ( float level );
+///	virtual bool                    SetWorldLevel		      ( float level, bool includeWorldNonSeaLevel );
+///	virtual bool                    ResetWorldLevel	          ();
+	virtual Vector3                 GetVertexPosition	      ( int vertexIndex );
+	virtual bool                    SetVertexPosition	      ( int vertexIndex, const Vector3& position );
+///	virtual Color                   GetColor                  () const;
+///	virtual bool                    SetColor                  ( const Color& color );
+///	virtual bool                    ResetColor                ();
 };
 
 #endif

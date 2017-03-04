@@ -454,7 +454,7 @@ namespace Lua
 		static bool						SetWorldWaterLevel				( lua_State* pLuaVM, float fLevel, bool bIncludeWorldNonSeaLevel );
 		static bool						ResetWorldWaterLevel			( lua_State* pLuaVM );
 		static bool						GetWaterVertexPosition			( lua_State* pLuaVM, PVOID pWater, int iVertexIndex, Math::Vector3& vecPosition );
-		static bool						SetWaterVertexPosition			( lua_State* pLuaVM, PVOID pWater, int iVertexIndex, Math::Vector3& vecPosition );
+		static bool						SetWaterVertexPosition			( lua_State* pLuaVM, PVOID pWater, int iVertexIndex, const Math::Vector3& vecPosition );
 		static bool						GetWaterColor					( lua_State* pLuaVM, unsigned char& ucRed, unsigned char& ucGreen, unsigned char& ucBlue, unsigned char& ucAlpha );
 		static bool						SetWaterColor					( lua_State* pLuaVM, unsigned char ucRed, unsigned char ucGreen, unsigned char ucBlue, unsigned char ucAlpha );
 		static bool						ResetWaterColor					( lua_State* pLuaVM );

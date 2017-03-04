@@ -6334,7 +6334,7 @@ bool Bindings::GetWaterVertexPosition( lua_State* pLuaVM, PVOID pWater, int iVer
 	return false;
 }
 
-bool Bindings::SetWaterVertexPosition( lua_State* pLuaVM, PVOID pWater, int iVertexIndex, Math::Vector3& vecPosition )
+bool Bindings::SetWaterVertexPosition( lua_State* pLuaVM, PVOID pWater, int iVertexIndex, const Math::Vector3& vecPosition )
 {
 	LuaArguments pLuaArguments;
 
