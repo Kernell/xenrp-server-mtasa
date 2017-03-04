@@ -115,6 +115,9 @@ public:
 	virtual bool                                ShowChat                    ( bool show );
 	virtual bool                                ResetMapInfo                ();
 
+public:
+	static Element* GetRoot();
+
 protected:
 	PVOID                                       LuaUserdata;
 	lua_State*                                  LuaVM;

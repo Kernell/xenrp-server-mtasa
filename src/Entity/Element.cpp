@@ -406,3 +406,10 @@ bool Element::ResetMapInfo()
 {
 	return Lua::Bindings::ResetMapInfo( LuaVM, LuaUserdata );
 }
+
+Element* Element::GetRoot()
+{
+	PVOID element = Lua::Bindings::GetRootElement( g_Module->GetLua() );
+
+	return g_Module->GetElementManager()->FindOrCreate( element );
+}
