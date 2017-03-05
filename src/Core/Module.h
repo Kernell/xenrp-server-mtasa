@@ -39,6 +39,7 @@ class Module;
 #include "Entity/Ban.h"
 #include "Entity/Blip.h"
 #include "Entity/ColShape.h"
+#include "Entity/World.h"
 
 #include "Lua/Bindings.h"
 

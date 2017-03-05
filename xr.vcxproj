@@ -39,6 +39,7 @@
     <ClCompile Include="src\Entity\Team.cpp" />
     <ClCompile Include="src\Entity\Vehicle.cpp" />
     <ClCompile Include="src\Entity\Water.cpp" />
+    <ClCompile Include="src\Entity\World.cpp" />
     <ClCompile Include="src\Event\EventRaisers.cpp" />
     <ClCompile Include="src\Lua\LuaArgument.cpp" />
     <ClCompile Include="src\Lua\LuaArguments.cpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="src\Entity\Team.h" />
     <ClInclude Include="src\Entity\Vehicle.h" />
     <ClInclude Include="src\Entity\Water.h" />
+    <ClInclude Include="src\Entity\World.h" />
     <ClInclude Include="src\Event\Event.h" />
     <ClInclude Include="src\Event\EventArgs.h" />
     <ClInclude Include="src\Event\EventArgs\AccountDataChangeEventArgs.h" />

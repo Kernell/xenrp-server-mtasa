@@ -469,7 +469,7 @@ namespace Lua
 		// General world get funcs
 		static bool						GetTime                         ( lua_State* pLuaVM, unsigned char& ucHour, unsigned char& ucMinute );
 		static bool						GetWeather                      ( lua_State* pLuaVM, unsigned char& ucWeather, unsigned char& ucWeatherBlendingTo );
-		static bool						GetZoneName                     ( lua_State* pLuaVM, Math::Vector3& vecPosition, string& strOutName, bool bCitiesOnly = false );
+		static bool						GetZoneName                     ( lua_State* pLuaVM, const Math::Vector3& vecPosition, string& strOutName, bool bCitiesOnly = false );
 		static bool						GetGravity                      ( lua_State* pLuaVM, float& fGravity );
 		static bool						GetGameSpeed                    ( lua_State* pLuaVM, float& fSpeed );
 		static bool						GetWaveHeight                   ( lua_State* pLuaVM, float& fHeight );

@@ -274,6 +274,9 @@
     <ClInclude Include="src\SharedUtil\WeaponType.h">
       <Filter>SharedUtil</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entity\World.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Module.cpp">
@@ -377,6 +380,7 @@
     <ClCompile Include="src\Manager\DatabaseManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entity\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\EventArgs\ConsoleEventArgs.h">

@@ -6535,7 +6535,7 @@ bool Bindings::GetWeather( lua_State* pLuaVM, unsigned char& ucWeather, unsigned
 	return false;
 }
 
-bool Bindings::GetZoneName( lua_State* pLuaVM, Math::Vector3& vecPosition, string& strOutName, bool bCitiesOnly )
+bool Bindings::GetZoneName( lua_State* pLuaVM, const Math::Vector3& vecPosition, string& strOutName, bool bCitiesOnly )
 {
 	LuaArguments pLuaArguments;
 
