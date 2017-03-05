@@ -99,7 +99,7 @@ const map< ElementType, pair< string, string > > ElementManager::_ElementType =
 	{ ElementType::Water,					{ "water",			"Water" } },
 	{ ElementType::Weapon,					{ "weapon",			"Weapon" } },
 	{ ElementType::DatabaseConnection,		{ "db-connection",	"DbConnection" } },
-	{ ElementType::Resource,				{ "resource",		"Element" } },
+	{ ElementType::Resource,				{ "resource",		"Resource" } },
 	{ ElementType::Root,					{ "root",			"Element" } },
 	{ ElementType::Unknown,					{ "unknown",		"Element" } },
 };
@@ -145,7 +145,18 @@ Element* ElementManager::Create( PVOID userdata )
 		return nullptr;
 	}
 
-	const string& typeName = Lua::Bindings::GetElementType( this->Module->GetLua(), userdata );
+	const string& userdataType = Lua::Bindings::GetUserdataType( this->Module->GetLua(), userdata );
+
+	string typeName = "element";
+
+	if( userdataType == "element" )
+	{
+		typeName = Lua::Bindings::GetElementType( this->Module->GetLua(), userdata );
+	}
+	else if( userdataType == "resource-data" )
+	{
+		typeName = "resource";
+	}
 	
 	Element* element = nullptr;
 
@@ -225,10 +236,15 @@ Element* ElementManager::Create( PVOID userdata )
 
 			break;
 		}
+		case ElementType::Resource:
+		{
+			element = new Resource( userdata );
+
+			break;
+		}
 		case ElementType::ScriptFile:
 		case ElementType::Weapon:
 		case ElementType::DatabaseConnection:
-		case ElementType::Resource:
 		case ElementType::Root:
 		case ElementType::Unknown:
 		case ElementType::Dummy:
