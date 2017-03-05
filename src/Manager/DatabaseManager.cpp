@@ -48,7 +48,10 @@ void DatabaseManager::Connect()
 
 	if( !this->IsConnected() )
 	{
-		this->Module->ErrorPrintf( "MySQL: failed to connect to %s: (%d) %s", this->Hostname, this->DB->Errno(), this->DB->Error().c_str() );
+		if( this->DB )
+		{
+			this->Module->ErrorPrintf( "MySQL: failed to connect to %s: (%d) %s", this->Hostname, this->DB->Errno(), this->DB->Error().c_str() );
+		}
 
 		this->Disconnect();
 	}
