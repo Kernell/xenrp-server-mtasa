@@ -121,9 +121,6 @@ bool Module::CommandHandler()
 
 bool Module::EventHandler()
 {
-	string	eventName;
-	void*	_this = nullptr;
-
 	LuaArguments luaArgs;
 
 	luaArgs.ReadArguments( this->LuaVM );
@@ -133,53 +130,7 @@ bool Module::EventHandler()
 		return 0;
 	}
 
-	uint i = 0;
-
-	list< LuaArgument* > argv;
-
-	vector < LuaArgument* > _args = luaArgs.GetArguments();
-
-	for( const auto& iter : _args )
-	{
-		LuaType luaType = iter->GetType();
-
-		switch( i )
-		{
-			case 0:
-			{
-				eventName = iter->GetString();
-
-				break;
-			}
-			case 2:
-			{
-				_this = iter->GetLightUserData();
-
-				break;
-			}
-			case 3:
-			{
-				if( luaType == LuaType::Nil )
-				{
-					break;
-				}
-
-				// dot not break
-			}
-			default:
-			{
-				argv.push_back( iter );
-
-				break;
-			}
-		}
-
-		++i;
-	}
-
-	Element* thisElement = this->ElementManager->FindOrCreate( _this );
-
-	return this->EventManager->Call( eventName, thisElement, argv );
+	return this->EventManager->Call( luaArgs.GetArguments() );
 }
 
 bool Module::AddEvent( const string& eventName, const string& handleElement )

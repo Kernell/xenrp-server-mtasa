@@ -17,7 +17,7 @@ class EventManager;
 
 #include "Event/Event.h"
 
-typedef void( *RaiseMethod )( Element*, Element*, list< LuaArgument* > );
+typedef void( *RaiseMethod )( Element*, Element*, vector< LuaArgument* > );
 
 class EventManager
 {
@@ -28,7 +28,7 @@ public:
 	void                        Connect                 ( const string& name, const string& handlerElement, RaiseMethod method );
 	void                        Disconnect              ( const string& name, const string& handlerElement, RaiseMethod method = nullptr );
 
-	bool                        Call                    ( const string& name, Element* _this, list< LuaArgument* > arguments );
+	bool                        Call                    ( vector< LuaArgument* > arguments );
 
 	inline Module*              GetModule               () const { return this->Module; }
 

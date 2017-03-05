@@ -129,26 +129,61 @@ void EventManager::Disconnect( const string& name, const string& handlerElement,
 	}
 }
 
-bool EventManager::Call( const string& name, Element* _this, list< LuaArgument* > arguments )
+bool EventManager::Call( vector< LuaArgument* > arguments )
 {
-	ElementManager* pElementManager = this->Module->GetElementManager();
+	ElementManager* elementManager = this->Module->GetElementManager();
 
-	Element* source = nullptr;
-
-	const auto& iter = *arguments.begin();
-
-	if( iter->GetType() == LuaType::LightUserdata )
+	auto shift = [ &arguments ]() -> LuaArgument*
 	{
-		source = pElementManager->FindOrCreate( iter->GetLightUserData() );
-	}
+		auto iter = arguments.begin();
 
+		LuaArgument* argument = *iter;
+
+		arguments.erase( iter );
+
+		return argument;
+	};
+
+	string _eventName = shift()->GetString();
+	Element* _source  = elementManager->FindOrCreate( shift()->GetLightUserData() );
+	Element* _this    = elementManager->FindOrCreate( shift()->GetLightUserData() );
+	Element* _client  = elementManager->FindOrCreate( shift()->GetLightUserData() );
+
+#if 0
+	list< LuaArgument* > argv;
+	uint i = 0;
+
+	for( const auto& iter : arguments )
+	{
+		LuaType luaType = iter->GetType();
+
+		switch( i )
+		{
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			{
+				break;
+			}
+			default:
+			{
+				argv.push_back( iter );
+
+				break;
+			}
+		}
+
+		++i;
+	}
+#endif
 	for( const auto& iter : this->Events )
 	{
-		if( iter.first == name )
+		if( iter.first == _eventName )
 		{
 			RaiseMethod method = iter.second;
 
-			(*method)( source, _this, arguments );
+			(*method)( _source, _this, arguments );
 
 			return true;
 		}

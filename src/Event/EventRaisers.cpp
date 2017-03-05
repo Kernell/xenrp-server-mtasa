@@ -14,9 +14,24 @@
 #include "EventRaisers.h"
 #include "Core/Module.h"
 
+#ifdef EVENT_RAISER
+#undef EVENT_RAISER
+#endif
+
+#define EVENT_RAISER(x)\
+	void EventRaisers::x( Element* source, Element* _this, vector< LuaArgument* > arguments )
+
 extern Module* g_Module;
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, bool* arg )
+template< class ... Args >
+static void ReadArguments( vector< LuaArgument* > arguments, Args ... args )
+{
+	vector< LuaArgument* >::value_type iter = *arguments.begin();
+
+	int tmp[] = { ReadArgument( iter, args ) ... };
+}
+
+int ReadArgument( vector< LuaArgument* >::value_type iter, bool* arg )
 {
 	( *arg ) = iter->GetBoolean();
 
@@ -25,7 +40,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, bool* arg
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, double* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, double* arg )
 {
 	( *arg ) = iter->GetNumber();
 
@@ -34,7 +49,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, double* a
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, float* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, float* arg )
 {
 	( *arg ) = iter->GetNumber< float >();
 
@@ -43,7 +58,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, float* ar
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, int* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, int* arg )
 {
 	( *arg ) = iter->GetNumber< int >();
 
@@ -52,7 +67,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, int* arg 
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Math::Vector2* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, Math::Vector2* arg )
 {
 	float x = iter->GetNumber< float >();
 
@@ -67,7 +82,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Math::Vec
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Math::Vector3* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, Math::Vector3* arg )
 {
 	float x = iter->GetNumber< float >();
 
@@ -86,7 +101,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Math::Vec
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, string* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, string* arg )
 {
 	( *arg ) = string( iter->GetString() );
 
@@ -95,7 +110,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, string* a
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Element* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, Element* arg )
 {
 	ElementManager* em = g_Module->GetElementManager();
 
@@ -106,7 +121,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, Element* 
 	return 0;
 }
 
-int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, LuaArgument* arg )
+int ReadArgument( vector< LuaArgument* >::value_type iter, LuaArgument* arg )
 {
 	arg = iter;
 
@@ -117,7 +132,7 @@ int EventRaisers::ReadArgument( list< LuaArgument* >::value_type iter, LuaArgume
 
 // Client events
 
-void EventRaisers::OnConsole( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnConsole )
 {
 	string message;
 
@@ -128,7 +143,7 @@ void EventRaisers::OnConsole( Element* source, Element* _this, list< LuaArgument
 
 // Colshape events
 
-void EventRaisers::OnColShapeHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnColShapeHit )
 {
 	Element* hitElement = nullptr;
 	bool matchingDimension;
@@ -138,7 +153,7 @@ void EventRaisers::OnColShapeHit( Element* source, Element* _this, list< LuaArgu
 	ElementManager::OnColShapeHit( new ColShapeEventArgs( source, _this, hitElement, matchingDimension ) );
 }
 
-void EventRaisers::OnColShapeLeave( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnColShapeLeave )
 {
 	Element* hitElement = nullptr;
 	bool matchingDimension;
@@ -150,12 +165,12 @@ void EventRaisers::OnColShapeLeave( Element* source, Element* _this, list< LuaAr
 
 // Element events
 
-void EventRaisers::OnElementDestroy( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementDestroy )
 {
 	ElementManager::OnElementDestroy( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnElementDataChange( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementDataChange )
 {
 	Player* client = nullptr;
 	string name;
@@ -166,7 +181,7 @@ void EventRaisers::OnElementDataChange( Element* source, Element* _this, list< L
 	ElementManager::OnElementDataChange( new ElementDataChangeEventArgs( source, _this, client, name, oldValue ) );
 }
 
-void EventRaisers::OnElementColShapeHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementColShapeHit )
 {
 	ColShape* colShape = nullptr;
 	bool matchingDimension;
@@ -176,7 +191,7 @@ void EventRaisers::OnElementColShapeHit( Element* source, Element* _this, list< 
 	ElementManager::OnElementColShapeHit( new ElementColShapeEventArgs( source, _this, colShape, matchingDimension ) );
 }
 
-void EventRaisers::OnElementColShapeLeave( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementColShapeLeave )
 {
 	ColShape* colShape = nullptr;
 	bool matchingDimension;
@@ -186,7 +201,7 @@ void EventRaisers::OnElementColShapeLeave( Element* source, Element* _this, list
 	ElementManager::OnElementColShapeLeave( new ElementColShapeEventArgs( source, _this, colShape, matchingDimension ) );
 }
 
-void EventRaisers::OnElementClicked( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementClicked )
 {
 	string mouseButton;
 	string buttonState;
@@ -200,7 +215,7 @@ void EventRaisers::OnElementClicked( Element* source, Element* _this, list< LuaA
 	ElementManager::OnElementClicked( new ElementClickedEventArgs( source, _this, mouseButton, buttonState, whoClicked, clickPos ) );
 }
 
-void EventRaisers::OnElementStartSync( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementStartSync )
 {
 	Player* newSyncer = nullptr;
 
@@ -209,7 +224,7 @@ void EventRaisers::OnElementStartSync( Element* source, Element* _this, list< Lu
 	ElementManager::OnElementStartSync( new PlayerEventArgs( source, _this, newSyncer ) );
 }
 
-void EventRaisers::OnElementStopSync( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementStopSync )
 {
 	Player* player = nullptr;
 
@@ -218,7 +233,7 @@ void EventRaisers::OnElementStopSync( Element* source, Element* _this, list< Lua
 	ElementManager::OnElementStopSync( new PlayerEventArgs( source, _this, player ) );
 }
 
-void EventRaisers::OnElementModelChange( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnElementModelChange )
 {
 	int oldModel;
 	int newModel;
@@ -230,7 +245,7 @@ void EventRaisers::OnElementModelChange( Element* source, Element* _this, list< 
 
 // Marker events
 
-void EventRaisers::OnMarkerHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnMarkerHit )
 {
 	Element* element = nullptr;
 	bool matchingDimension;
@@ -240,7 +255,7 @@ void EventRaisers::OnMarkerHit( Element* source, Element* _this, list< LuaArgume
 	ElementManager::OnMarkerHit( new MarkerEventArgs( source, _this, element, matchingDimension ) );
 }
 
-void EventRaisers::OnMarkerLeave( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnMarkerLeave )
 {
 	Element* element = nullptr;
 	bool matchingDimension;
@@ -252,12 +267,12 @@ void EventRaisers::OnMarkerLeave( Element* source, Element* _this, list< LuaArgu
 
 // Pickup events
 
-void EventRaisers::OnPickupSpawn( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPickupSpawn )
 {
 	ElementManager::OnPickupSpawn( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPickupHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPickupHit )
 {
 	Player* player = nullptr;
 
@@ -266,7 +281,7 @@ void EventRaisers::OnPickupHit( Element* source, Element* _this, list< LuaArgume
 	ElementManager::OnPickupHit( new PlayerEventArgs( source, _this, player ) );
 }
 
-void EventRaisers::OnPickupUse( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPickupUse )
 {
 	Player* player = nullptr;
 
@@ -277,7 +292,7 @@ void EventRaisers::OnPickupUse( Element* source, Element* _this, list< LuaArgume
 
 // Player events
 
-void EventRaisers::OnPlayerBan( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerBan )
 {
 	Ban*    banPointer = nullptr;
 	Player* responsibleElement = nullptr;
@@ -287,7 +302,7 @@ void EventRaisers::OnPlayerBan( Element* source, Element* _this, list< LuaArgume
 	ElementManager::OnPlayerBan( new PlayerBanEventArgs( source, _this, banPointer, responsibleElement ) );
 }
 
-void EventRaisers::OnPlayerChat( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerChat )
 {
 	string message;
 	int messageType;
@@ -297,7 +312,7 @@ void EventRaisers::OnPlayerChat( Element* source, Element* _this, list< LuaArgum
 	ElementManager::OnPlayerChat( new PlayerChatEventArgs( source, _this, message, messageType ) );
 }
 
-void EventRaisers::OnPlayerPrivateMessage( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerPrivateMessage )
 {
 	string message;
 	Player* recipient = nullptr;
@@ -307,7 +322,7 @@ void EventRaisers::OnPlayerPrivateMessage( Element* source, Element* _this, list
 	ElementManager::OnPlayerPrivateMessage( new PlayerPrivateMessageEventArgs( source, _this, message, recipient ) );
 }
 
-void EventRaisers::OnPlayerConnect( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerConnect )
 {
 	string nick;
 	string ip;
@@ -321,7 +336,7 @@ void EventRaisers::OnPlayerConnect( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnPlayerConnect( new PlayerConnectEventArgs( source, _this, nick, ip, username, serial, versionNumber, versionString ) );
 }
 
-void EventRaisers::OnPlayerChangeNick( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerChangeNick )
 {
 	string oldNick;
 	string newNick;
@@ -331,7 +346,7 @@ void EventRaisers::OnPlayerChangeNick( Element* source, Element* _this, list< Lu
 	ElementManager::OnPlayerChangeNick( new PlayerChangeNickEventArgs( source, _this, oldNick, newNick ) );
 }
 
-void EventRaisers::OnPlayerLogin( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerLogin )
 {
 	Account* previousAccount = nullptr;
 	Account* currentAccount  = nullptr;
@@ -342,7 +357,7 @@ void EventRaisers::OnPlayerLogin( Element* source, Element* _this, list< LuaArgu
 	ElementManager::OnPlayerLogin( new PlayerLoginEventArgs( source, _this, previousAccount, currentAccount, autoLogin ) );
 }
 
-void EventRaisers::OnPlayerLogout( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerLogout )
 {
 	Account* previousAccount = nullptr;
 	Account* currentAccount  = nullptr;
@@ -352,7 +367,7 @@ void EventRaisers::OnPlayerLogout( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnPlayerLogout( new PlayerLogoutEventArgs( source, _this, previousAccount, currentAccount ) );
 }
 
-void EventRaisers::OnPlayerDamage( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerDamage )
 {
 	Player* attacker = nullptr;
 	int attackerweapon;
@@ -364,12 +379,12 @@ void EventRaisers::OnPlayerDamage( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnPlayerDamage( new PlayerDamageEventArgs( source, _this, attacker, attackerweapon, bodypart, loss ) );
 }
 
-void EventRaisers::OnPlayerJoin( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerJoin )
 {
 	ElementManager::OnPlayerJoin( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPlayerQuit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerQuit )
 {
 	string type;
 	string reason;
@@ -380,7 +395,7 @@ void EventRaisers::OnPlayerQuit( Element* source, Element* _this, list< LuaArgum
 	ElementManager::OnPlayerQuit( new PlayerQuitEventArgs( source, _this, type, reason, responsePlayer ) );
 }
 
-void EventRaisers::OnPlayerSpawn( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerSpawn )
 {
 	float x;
 	float y;
@@ -398,7 +413,7 @@ void EventRaisers::OnPlayerSpawn( Element* source, Element* _this, list< LuaArgu
 	ElementManager::OnPlayerSpawn( new PlayerSpawnEventArgs( source, _this, position, rotation, team, skin, interior, dimension ) );
 }
 
-void EventRaisers::OnPlayerWasted( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerWasted )
 {
 	int totalAmmo;
 	Element* killer = nullptr;
@@ -411,7 +426,7 @@ void EventRaisers::OnPlayerWasted( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnPlayerWasted( new PedWastedEventArgs( source, _this, totalAmmo, killer, killerWeapon, bodypart, stealth ) );
 }
 
-void EventRaisers::OnPlayerTarget( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerTarget )
 {
 	Element* targettedElement = nullptr;
 
@@ -420,7 +435,7 @@ void EventRaisers::OnPlayerTarget( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnPlayerTarget( new PlayerTargetEventArgs( source, _this, targettedElement ) );
 }
 
-void EventRaisers::OnPlayerVehicleEnter( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerVehicleEnter )
 {
 	Vehicle* vehicle = nullptr;
 	int seat;
@@ -431,7 +446,7 @@ void EventRaisers::OnPlayerVehicleEnter( Element* source, Element* _this, list< 
 	ElementManager::OnPlayerVehicleEnter( new PlayerVehicleEnterEventArgs( source, _this, vehicle, seat, jacker ) );
 }
 
-void EventRaisers::OnPlayerVehicleExit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerVehicleExit )
 {
 	Vehicle* vehicle = nullptr;
 	int seat;
@@ -442,7 +457,7 @@ void EventRaisers::OnPlayerVehicleExit( Element* source, Element* _this, list< L
 	ElementManager::OnPlayerVehicleExit( new PlayerVehicleEnterEventArgs( source, _this, vehicle, seat, jacker ) );
 }
 
-void EventRaisers::OnPlayerWeaponSwitch( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerWeaponSwitch )
 {
 	int previousWeaponID;
 	int currentWeaponID;
@@ -452,7 +467,7 @@ void EventRaisers::OnPlayerWeaponSwitch( Element* source, Element* _this, list< 
 	ElementManager::OnPlayerWeaponSwitch( new PedWeaponSwitchEventArgs( source, _this, previousWeaponID, currentWeaponID ) );
 }
 
-void EventRaisers::OnPlayerMarkerHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerMarkerHit )
 {
 	Marker* marker = nullptr;
 	bool matchingDimension;
@@ -462,7 +477,7 @@ void EventRaisers::OnPlayerMarkerHit( Element* source, Element* _this, list< Lua
 	ElementManager::OnPlayerMarkerHit( new PlayerMarkerEventArgs( source, _this, marker, matchingDimension ) );
 }
 
-void EventRaisers::OnPlayerMarkerLeave( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerMarkerLeave )
 {
 	Marker* marker = nullptr;
 	bool matchingDimension;
@@ -472,7 +487,7 @@ void EventRaisers::OnPlayerMarkerLeave( Element* source, Element* _this, list< L
 	ElementManager::OnPlayerMarkerLeave( new PlayerMarkerEventArgs( source, _this, marker, matchingDimension ) );
 }
 
-void EventRaisers::OnPlayerPickupHit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerPickupHit )
 {
 	Pickup* pickup = nullptr;
 	bool matchingDimension;
@@ -482,7 +497,7 @@ void EventRaisers::OnPlayerPickupHit( Element* source, Element* _this, list< Lua
 	ElementManager::OnPlayerPickupHit( new PlayerPickupHitEventArgs( source, _this, pickup, matchingDimension ) );
 }
 
-void EventRaisers::OnPlayerPickupUse( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerPickupUse )
 {
 	Pickup* pickup = nullptr;
 
@@ -491,7 +506,7 @@ void EventRaisers::OnPlayerPickupUse( Element* source, Element* _this, list< Lua
 	ElementManager::OnPlayerPickupUse( new PlayerPickupUseEventArgs( source, _this, pickup ) );
 }
 
-void EventRaisers::OnPlayerClick( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerClick )
 {
 	string mouseButton;
 	string buttonState;
@@ -504,7 +519,7 @@ void EventRaisers::OnPlayerClick( Element* source, Element* _this, list< LuaArgu
 	ElementManager::OnPlayerClick( new PlayerClickEventArgs( source, _this, mouseButton, buttonState, clickedElement, world, screen ) );
 }
 
-void EventRaisers::OnPlayerContact( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerContact )
 {
 	Element* previous = nullptr;
 	Element* current  = nullptr;
@@ -514,7 +529,7 @@ void EventRaisers::OnPlayerContact( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnPlayerContact( new PlayerContactEventArgs( source, _this, previous, current ) );
 }
 
-void EventRaisers::OnPlayerStealthKill( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerStealthKill )
 {
 	Ped* ped = nullptr;
 
@@ -523,17 +538,17 @@ void EventRaisers::OnPlayerStealthKill( Element* source, Element* _this, list< L
 	ElementManager::OnPlayerStealthKill( new PedEventArgs( source, _this, ped ) );
 }
 
-void EventRaisers::OnPlayerMute( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerMute )
 {
 	ElementManager::OnPlayerMute( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPlayerUnmute( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerUnmute )
 {
 	ElementManager::OnPlayerUnmute( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPlayerCommand( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerCommand )
 {
 	string command;
 
@@ -542,7 +557,7 @@ void EventRaisers::OnPlayerCommand( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnPlayerCommand( new PlayerCommandEventArgs( source, _this, command ) );
 }
 
-void EventRaisers::OnPlayerModInfo( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerModInfo )
 {
 	string filename;
 
@@ -551,17 +566,17 @@ void EventRaisers::OnPlayerModInfo( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnPlayerModInfo( new PlayerModInfoEventArgs( source, _this, filename, list ) );
 }
 
-void EventRaisers::OnPlayerVoiceStart( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerVoiceStart )
 {
 	ElementManager::OnPlayerVoiceStart( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPlayerVoiceStop( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerVoiceStop )
 {
 	ElementManager::OnPlayerVoiceStop( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnPlayerScreenShot( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPlayerScreenShot )
 {
 	Resource* resource = nullptr;
 	string status;
@@ -576,7 +591,7 @@ void EventRaisers::OnPlayerScreenShot( Element* source, Element* _this, list< Lu
 
 // Ped events
 
-void EventRaisers::OnPedWasted( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPedWasted )
 {
 	int totalAmmo;
 	Element* killer = nullptr;
@@ -589,7 +604,7 @@ void EventRaisers::OnPedWasted( Element* source, Element* _this, list< LuaArgume
 	ElementManager::OnPedWasted( new PedWastedEventArgs( source, _this, totalAmmo, killer, killerWeapon, bodypart, stealth ) );
 }
 
-void EventRaisers::OnPedWeaponSwitch( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnPedWeaponSwitch )
 {
 	int previousWeaponID;
 	int currentWeaponID;
@@ -601,7 +616,7 @@ void EventRaisers::OnPedWeaponSwitch( Element* source, Element* _this, list< Lua
 
 // Resource events
 
-void EventRaisers::OnResourceStart( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnResourceStart )
 {
 	Resource* resource = nullptr;
 
@@ -610,7 +625,7 @@ void EventRaisers::OnResourceStart( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnResourceStart( new ResourceEventArgs( source, _this, resource ) );
 }
 
-void EventRaisers::OnResourcePreStart( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnResourcePreStart )
 {
 	Resource* resource = nullptr;
 
@@ -619,7 +634,7 @@ void EventRaisers::OnResourcePreStart( Element* source, Element* _this, list< Lu
 	ElementManager::OnResourcePreStart( new ResourceEventArgs( source, _this, resource ) );
 }
 
-void EventRaisers::OnResourceStop( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnResourceStop )
 {
 	Resource* resource = nullptr;
 
@@ -630,7 +645,7 @@ void EventRaisers::OnResourceStop( Element* source, Element* _this, list< LuaArg
 
 // Server events
 
-void EventRaisers::OnBan( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnBan )
 {
 	Ban* ban = nullptr;
 
@@ -639,7 +654,7 @@ void EventRaisers::OnBan( Element* source, Element* _this, list< LuaArgument* > 
 	ElementManager::OnBan( new BanEventArgs( source, _this, ban ) );
 }
 
-void EventRaisers::OnDebugMessage( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnDebugMessage )
 {
 	string message;
 	int level;
@@ -651,7 +666,7 @@ void EventRaisers::OnDebugMessage( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnDebugMessage( new DebugMessageEventArgs( source, _this, message, level, file, line ) );
 }
 
-void EventRaisers::OnSettingChange( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnSettingChange )
 {
 	string setting;
 	string oldValue;
@@ -662,7 +677,7 @@ void EventRaisers::OnSettingChange( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnSettingChange( new SettingChangeEventArgs( source, _this, setting, oldValue, newValue ) );
 }
 
-void EventRaisers::OnAccountDataChange( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnAccountDataChange )
 {
 	Account* account = nullptr;
 	string key;
@@ -673,7 +688,7 @@ void EventRaisers::OnAccountDataChange( Element* source, Element* _this, list< L
 	ElementManager::OnAccountDataChange( new AccountDataChangeEventArgs( source, _this, account, key, value ) );
 }
 
-void EventRaisers::OnUnban( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnUnban )
 {
 	Ban* ban = nullptr;
 	Player* responsibleElement = nullptr;
@@ -683,7 +698,7 @@ void EventRaisers::OnUnban( Element* source, Element* _this, list< LuaArgument* 
 	ElementManager::OnUnban( new UnbanEventArgs( source, _this, ban, responsibleElement ) );
 }
 
-void EventRaisers::OnChatMessage( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnChatMessage )
 {
 	string message;
 	Element* element = nullptr;
@@ -695,7 +710,7 @@ void EventRaisers::OnChatMessage( Element* source, Element* _this, list< LuaArgu
 
 // Vehicle events
 
-void EventRaisers::OnTrailerAttach( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnTrailerAttach )
 {
 	Vehicle* vehicle = nullptr;
 
@@ -704,7 +719,7 @@ void EventRaisers::OnTrailerAttach( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnTrailerAttach( new VehicleEventArgs( source, _this, vehicle ) );
 }
 
-void EventRaisers::OnTrailerDetach( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnTrailerDetach )
 {
 	Vehicle* vehicle = nullptr;
 
@@ -713,7 +728,7 @@ void EventRaisers::OnTrailerDetach( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnTrailerDetach( new VehicleEventArgs( source, _this, vehicle ) );
 }
 
-void EventRaisers::OnVehicleDamage( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleDamage )
 {
 	float loss;
 
@@ -722,7 +737,7 @@ void EventRaisers::OnVehicleDamage( Element* source, Element* _this, list< LuaAr
 	ElementManager::OnVehicleDamage( new VehicleDamageEventArgs( source, _this, loss ) );
 }
 
-void EventRaisers::OnVehicleRespawn( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleRespawn )
 {
 	bool exploded;
 
@@ -731,7 +746,7 @@ void EventRaisers::OnVehicleRespawn( Element* source, Element* _this, list< LuaA
 	ElementManager::OnVehicleRespawn( new VehicleRespawnEventArgs( source, _this, exploded ) );
 }
 
-void EventRaisers::OnVehicleStartEnter( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleStartEnter )
 {
 	Player* player = nullptr;
 	int seat;
@@ -743,7 +758,7 @@ void EventRaisers::OnVehicleStartEnter( Element* source, Element* _this, list< L
 	ElementManager::OnVehicleStartEnter( new VehicleStartEnterEventArgs( source, _this, player, seat, jacked, door ) );
 }
 
-void EventRaisers::OnVehicleStartExit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleStartExit )
 {
 	Player* player = nullptr;
 	int seat;
@@ -755,7 +770,7 @@ void EventRaisers::OnVehicleStartExit( Element* source, Element* _this, list< Lu
 	ElementManager::OnVehicleStartExit( new VehicleStartEnterEventArgs( source, _this, player, seat, jacked, door ) );
 }
 
-void EventRaisers::OnVehicleEnter( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleEnter )
 {
 	Player* player = nullptr;
 	int seat;
@@ -766,7 +781,7 @@ void EventRaisers::OnVehicleEnter( Element* source, Element* _this, list< LuaArg
 	ElementManager::OnVehicleEnter( new VehicleEnterEventArgs( source, _this, player, seat, jacked ) );
 }
 
-void EventRaisers::OnVehicleExit( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleExit )
 {
 	Player* player = nullptr;
 	int seat;
@@ -777,12 +792,12 @@ void EventRaisers::OnVehicleExit( Element* source, Element* _this, list< LuaArgu
 	ElementManager::OnVehicleExit( new VehicleEnterEventArgs( source, _this, player, seat, jacked ) );
 }
 
-void EventRaisers::OnVehicleExplode( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnVehicleExplode )
 {
 	ElementManager::OnVehicleExplode( new EventArgs( source, _this ) );
 }
 
-void EventRaisers::OnWeaponFire( Element* source, Element* _this, list< LuaArgument* > arguments )
+EVENT_RAISER( OnWeaponFire )
 {
 	ElementManager::OnWeaponFire( new EventArgs( source, _this ) );
 }

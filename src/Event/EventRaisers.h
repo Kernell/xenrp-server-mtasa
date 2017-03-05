@@ -18,124 +18,108 @@
 
 #include "Entity/Element.h"
 
+#define EVENT_RAISER(x)\
+	static void x( Element* source, Element* _this, vector< LuaArgument* > arguments )
+
 class EventRaisers
 {
-private:
-	static int ReadArgument( list< LuaArgument* >::value_type iter, bool* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, double* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, float* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, int* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, Math::Vector2* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, Math::Vector3* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, string* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, Element* arg );
-	static int ReadArgument( list< LuaArgument* >::value_type iter, LuaArgument* arg );
-
-	template< class ... Args >
-	static void ReadArguments( list< LuaArgument* > arguments, Args ... args )
-	{
-		list< LuaArgument* >::value_type iter = *arguments.begin();
-
-		int tmp[] = { ReadArgument( iter, args ) ... };
-	}
-
 public:
 	// Client events
 
-	static void OnConsole( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnConsole );
 
 	// Colshape events
 
-	static void OnColShapeHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnColShapeLeave( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnColShapeHit );
+	EVENT_RAISER( OnColShapeLeave );
 
 	// Element events
 
-	static void OnElementDestroy( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementDataChange( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementColShapeHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementColShapeLeave( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementClicked( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementStartSync( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementStopSync( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnElementModelChange( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnElementDestroy );
+	EVENT_RAISER( OnElementDataChange );
+	EVENT_RAISER( OnElementColShapeHit );
+	EVENT_RAISER( OnElementColShapeLeave );
+	EVENT_RAISER( OnElementClicked );
+	EVENT_RAISER( OnElementStartSync );
+	EVENT_RAISER( OnElementStopSync );
+	EVENT_RAISER( OnElementModelChange );
 
 	// Marker events
 
-	static void OnMarkerHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnMarkerLeave( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnMarkerHit );
+	EVENT_RAISER( OnMarkerLeave );
 
 	// Pickup events
 
-	static void OnPickupSpawn( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPickupHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPickupUse( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnPickupSpawn );
+	EVENT_RAISER( OnPickupHit );
+	EVENT_RAISER( OnPickupUse );
 
 	// Player events
 
-	static void OnPlayerBan( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerChat( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerPrivateMessage( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerConnect( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerChangeNick( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerLogin( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerLogout( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerDamage( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerJoin( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerQuit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerSpawn( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerWasted( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerTarget( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerVehicleEnter( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerVehicleExit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerWeaponSwitch( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerMarkerHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerMarkerLeave( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerPickupHit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerPickupUse( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerClick( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerContact( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerStealthKill( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerMute( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerUnmute( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerCommand( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerModInfo( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerVoiceStart( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerVoiceStop( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPlayerScreenShot( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnPlayerBan );
+	EVENT_RAISER( OnPlayerChat );
+	EVENT_RAISER( OnPlayerPrivateMessage );
+	EVENT_RAISER( OnPlayerConnect );
+	EVENT_RAISER( OnPlayerChangeNick );
+	EVENT_RAISER( OnPlayerLogin );
+	EVENT_RAISER( OnPlayerLogout );
+	EVENT_RAISER( OnPlayerDamage );
+	EVENT_RAISER( OnPlayerJoin );
+	EVENT_RAISER( OnPlayerQuit );
+	EVENT_RAISER( OnPlayerSpawn );
+	EVENT_RAISER( OnPlayerWasted );
+	EVENT_RAISER( OnPlayerTarget );
+	EVENT_RAISER( OnPlayerVehicleEnter );
+	EVENT_RAISER( OnPlayerVehicleExit );
+	EVENT_RAISER( OnPlayerWeaponSwitch );
+	EVENT_RAISER( OnPlayerMarkerHit );
+	EVENT_RAISER( OnPlayerMarkerLeave );
+	EVENT_RAISER( OnPlayerPickupHit );
+	EVENT_RAISER( OnPlayerPickupUse );
+	EVENT_RAISER( OnPlayerClick );
+	EVENT_RAISER( OnPlayerContact );
+	EVENT_RAISER( OnPlayerStealthKill );
+	EVENT_RAISER( OnPlayerMute );
+	EVENT_RAISER( OnPlayerUnmute );
+	EVENT_RAISER( OnPlayerCommand );
+	EVENT_RAISER( OnPlayerModInfo );
+	EVENT_RAISER( OnPlayerVoiceStart );
+	EVENT_RAISER( OnPlayerVoiceStop );
+	EVENT_RAISER( OnPlayerScreenShot );
 
 	// Ped events
 
-	static void OnPedWasted( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnPedWeaponSwitch( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnPedWasted );
+	EVENT_RAISER( OnPedWeaponSwitch );
 
 	// Resource events
 
-	static void OnResourceStart( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnResourcePreStart( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnResourceStop( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnResourceStart );
+	EVENT_RAISER( OnResourcePreStart );
+	EVENT_RAISER( OnResourceStop );
 
 	// Server events
 
-	static void OnBan( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnDebugMessage( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnSettingChange( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnAccountDataChange( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnUnban( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnChatMessage( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnBan );
+	EVENT_RAISER( OnDebugMessage );
+	EVENT_RAISER( OnSettingChange );
+	EVENT_RAISER( OnAccountDataChange );
+	EVENT_RAISER( OnUnban );
+	EVENT_RAISER( OnChatMessage );
 
 	// Vehicle events
 
-	static void OnTrailerAttach( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnTrailerDetach( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleDamage( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleRespawn( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleStartEnter( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleStartExit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleEnter( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleExit( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnVehicleExplode( Element* source, Element* _this, list< LuaArgument* > arguments );
-	static void OnWeaponFire( Element* source, Element* _this, list< LuaArgument* > arguments );
+	EVENT_RAISER( OnTrailerAttach );
+	EVENT_RAISER( OnTrailerDetach );
+	EVENT_RAISER( OnVehicleDamage );
+	EVENT_RAISER( OnVehicleRespawn );
+	EVENT_RAISER( OnVehicleStartEnter );
+	EVENT_RAISER( OnVehicleStartExit );
+	EVENT_RAISER( OnVehicleEnter );
+	EVENT_RAISER( OnVehicleExit );
+	EVENT_RAISER( OnVehicleExplode );
+	EVENT_RAISER( OnWeaponFire );
 };
 
 #endif
