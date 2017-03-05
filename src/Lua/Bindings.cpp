@@ -9166,3 +9166,24 @@ bool Bindings::SetWeaponAmmo( lua_State* pLuaVM, PVOID pElement, unsigned char u
 
 	return false;
 }
+
+string Bindings::GetUserdataType( lua_State* pLuaVM, PVOID pUserData )
+{
+	string strResult;
+
+	LuaArguments pLuaArguments;
+
+	pLuaArguments.PushUserData( pUserData );
+
+	if( pLuaArguments.Call( pLuaVM, "getUserdataType", 1 ) )
+	{
+		LuaArgument pLuaArgument( pLuaVM, -1 );
+
+		if( pLuaArgument.GetType() == LuaType::String )
+		{
+			strResult = pLuaArgument.GetString();
+		}
+	}
+
+	return strResult;
+}

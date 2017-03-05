@@ -658,6 +658,10 @@ namespace Lua
 		static bool						TakeWeapon						( lua_State* pLuaVM, PVOID pPed, unsigned char ucWeaponID, unsigned short usAmmo = 9999 );
 		static bool						TakeAllWeapons					( lua_State* pLuaVM, PVOID pPed );
 		static bool						SetWeaponAmmo					( lua_State* pLuaVM, PVOID pPed, unsigned char ucWeaponID, unsigned short usAmmo, unsigned short usAmmoInClip );
+
+		// Utility functions
+
+		static string				    GetUserdataType                 ( lua_State* pLuaVM, PVOID pUserData );
 	};
 };
 #endif
