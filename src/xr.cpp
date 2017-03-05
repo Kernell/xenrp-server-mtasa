@@ -31,7 +31,17 @@ DLL_EXPORT void RegisterFunctions( lua_State* luaVM )
 {
     if( g_Module )
 	{
-		g_Module->Init( luaVM );
+		PVOID resource = Lua::Bindings::GetThisResource( luaVM );
+
+		if( resource )
+		{
+			string name;
+
+			if( Lua::Bindings::GetResourceName( luaVM, resource, name ) && name == MODULE_SERVER_RESOURCE )
+			{
+				g_Module->Init( luaVM );
+			}
+		}
 	}
 }
 
