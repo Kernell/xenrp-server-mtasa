@@ -31,6 +31,57 @@
     <Filter Include="Event\EventArgs">
       <UniqueIdentifier>{28daf7e0-6fc1-42df-a1c4-5479e31720b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entity\Account">
+      <UniqueIdentifier>{8c50b267-2379-43b8-90c4-e492df42d908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Ban">
+      <UniqueIdentifier>{84e04c8b-16d1-46ef-8547-26aefd8a81b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Blip">
+      <UniqueIdentifier>{de66272e-5f00-4a81-8260-c5dfc09b553f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\ColShape">
+      <UniqueIdentifier>{68166cd6-1aad-45a3-ba7e-0b8c247cb457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Console">
+      <UniqueIdentifier>{8a5aafc7-49aa-487c-b36b-e94576e94ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Element">
+      <UniqueIdentifier>{6a44e336-3e85-49ca-9c76-8859aa099741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Marker">
+      <UniqueIdentifier>{fee968b5-8c36-48e4-94e4-c88f3d56fe8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Object">
+      <UniqueIdentifier>{59255694-b785-415c-8e1a-07be86f3a4bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Ped">
+      <UniqueIdentifier>{c53abfa9-7d0e-4ae6-bc95-448344a70ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Pickup">
+      <UniqueIdentifier>{43ec8495-d6da-4bc7-8265-d55f061d71ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Player">
+      <UniqueIdentifier>{4513d349-1c8e-4904-8a13-19b40f2ac0c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\RadarArea">
+      <UniqueIdentifier>{349827f8-3216-4c50-822f-58caa9641d2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Resource">
+      <UniqueIdentifier>{608b2048-de5d-4d03-985a-bf045f1fc382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Team">
+      <UniqueIdentifier>{34b8d414-e89d-4b56-ab44-17992610f30e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Vehicle">
+      <UniqueIdentifier>{10434020-dd14-4bbf-8858-54f8f858e8fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\Water">
+      <UniqueIdentifier>{54bedff9-61d6-4039-bb2b-a52613e9cf73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entity\World">
+      <UniqueIdentifier>{94b11af3-6d14-458e-ad3e-42e9913d46a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\ILuaModuleManager.h">
@@ -205,54 +256,6 @@
     <ClInclude Include="src\Event\EventArgs\VehicleStartEnterEventArgs.h">
       <Filter>Event\EventArgs</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entity\Element.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Ped.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Player.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Vehicle.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Object.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Resource.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Account.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Ban.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Blip.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\ColShape.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Console.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Marker.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Pickup.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\RadarArea.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Team.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entity\Water.h">
-      <Filter>Entity</Filter>
-    </ClInclude>
     <ClInclude Include="src\Lua\LuaArgument.h">
       <Filter>Lua</Filter>
     </ClInclude>
@@ -274,8 +277,56 @@
     <ClInclude Include="src\SharedUtil\WeaponType.h">
       <Filter>SharedUtil</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entity\Account.h">
+      <Filter>Entity\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Ban.h">
+      <Filter>Entity\Ban</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Blip.h">
+      <Filter>Entity\Blip</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\ColShape.h">
+      <Filter>Entity\ColShape</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Console.h">
+      <Filter>Entity\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Element.h">
+      <Filter>Entity\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Marker.h">
+      <Filter>Entity\Marker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Ped.h">
+      <Filter>Entity\Ped</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Object.h">
+      <Filter>Entity\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Pickup.h">
+      <Filter>Entity\Pickup</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Player.h">
+      <Filter>Entity\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\RadarArea.h">
+      <Filter>Entity\RadarArea</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Resource.h">
+      <Filter>Entity\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Team.h">
+      <Filter>Entity\Team</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Vehicle.h">
+      <Filter>Entity\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity\Water.h">
+      <Filter>Entity\Water</Filter>
+    </ClInclude>
     <ClInclude Include="src\Entity\World.h">
-      <Filter>Entity</Filter>
+      <Filter>Entity\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,9 +365,6 @@
     <ClCompile Include="src\Manager\EventManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entity\Element.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
     <ClCompile Include="src\Lua\LuaArgument.cpp">
       <Filter>Lua</Filter>
     </ClCompile>
@@ -325,51 +373,6 @@
     </ClCompile>
     <ClCompile Include="src\Event\EventRaisers.cpp">
       <Filter>Event</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Account.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Ban.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Blip.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\ColShape.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Console.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Marker.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Object.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Ped.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Pickup.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Player.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\RadarArea.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Resource.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Team.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Vehicle.cpp">
-      <Filter>Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entity\Water.cpp">
-      <Filter>Entity</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\MySQL.cpp">
       <Filter>Core</Filter>
@@ -380,7 +383,57 @@
     <ClCompile Include="src\Manager\DatabaseManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entity\World.cpp" />
+    <ClCompile Include="src\Entity\Account.cpp">
+      <Filter>Entity\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Ban.cpp">
+      <Filter>Entity\Ban</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Blip.cpp">
+      <Filter>Entity\Blip</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\ColShape.cpp">
+      <Filter>Entity\ColShape</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Console.cpp">
+      <Filter>Entity\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Element.cpp">
+      <Filter>Entity\Element</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Marker.cpp">
+      <Filter>Entity\Marker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Ped.cpp">
+      <Filter>Entity\Ped</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Object.cpp">
+      <Filter>Entity\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Pickup.cpp">
+      <Filter>Entity\Pickup</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Player.cpp">
+      <Filter>Entity\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\RadarArea.cpp">
+      <Filter>Entity\RadarArea</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Resource.cpp">
+      <Filter>Entity\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Team.cpp">
+      <Filter>Entity\Team</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Vehicle.cpp">
+      <Filter>Entity\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\Water.cpp">
+      <Filter>Entity\Water</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity\World.cpp">
+      <Filter>Entity\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\EventArgs\ConsoleEventArgs.h">
