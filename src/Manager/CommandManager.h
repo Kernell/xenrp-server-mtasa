@@ -18,6 +18,7 @@ class CommandManager;
 #include "Core/Module.h"
 
 #include "Command/IConsoleCommand.h"
+#include "Command/DB.h"
 #include "Command/User.h"
 
 class CommandManager
@@ -27,7 +28,7 @@ public:
 								~CommandManager                     ();
 
 	bool                        Add                                 ( Command::IConsoleCommand* command );
-	bool                        Execute                             ( Element* player, const string& commandName, const vector< string > argv );
+	bool                        Execute                             ( Element* player, const string& commandName, const vector< string >& argv );
 	bool                        Remove                              ( const string& commandName, Command::IConsoleCommand* command = nullptr );
 
 	void                        ClearCommands                       ();

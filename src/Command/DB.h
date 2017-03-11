@@ -16,10 +16,10 @@
 
 namespace Command
 {
-	class User : public IConsoleCommand
+	class DB : public IConsoleCommand
 	{
 	public:
-		User( class CommandManager* manager );
+		DB( class CommandManager* manager );
 
 		virtual bool Execute( Element* player, const vector< string >& arguments ) override;
 	};

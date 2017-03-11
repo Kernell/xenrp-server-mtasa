@@ -19,7 +19,8 @@ namespace Command
 #ifndef __ICONSOLECOMMAND_H
 #define __ICONSOLECOMMAND_H
 
-#include "Manager/CommandManager.h"
+class CommandManager;
+class Element;
 
 namespace Command
 {
@@ -31,7 +32,7 @@ namespace Command
 
 		virtual                             ~IConsoleCommand() {};
 
-		virtual bool                        Execute        ( Element* player, vector< string > arguments ) { return false; }
+		virtual bool                        Execute        ( Element* player, const vector< string >& arguments ) { return false; }
 		virtual string                      GetName        () const { return this->Name; }
 		virtual CommandManager*             GetManager     () const { return this->Manager; }
 		virtual bool                        Info           () const { return false; }

@@ -328,6 +328,9 @@
     <ClInclude Include="src\Entity\World.h">
       <Filter>Entity\World</Filter>
     </ClInclude>
+    <ClInclude Include="src\Command\DB.h">
+      <Filter>Command</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Module.cpp">
@@ -434,6 +437,7 @@
     <ClCompile Include="src\Entity\World.cpp">
       <Filter>Entity\World</Filter>
     </ClCompile>
+    <ClCompile Include="src\Command\DB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\EventArgs\ConsoleEventArgs.h">

@@ -17,6 +17,7 @@ CommandManager::CommandManager( ::Module* module )
 {
 	this->Module = module;
 
+	this->Add( new Command::DB( this ) );
 	this->Add( new Command::User( this ) );
 }
 
@@ -41,7 +42,7 @@ bool CommandManager::Add( Command::IConsoleCommand* command )
 	return true;
 }
 
-bool CommandManager::Execute( Element* player, const string& commandName, vector< string > argv )
+bool CommandManager::Execute( Element* player, const string& commandName, const vector< string >& argv )
 {
 	Command::IConsoleCommand* command = this->GetCommand( commandName );
 

@@ -165,7 +165,7 @@ bool Module::RemoveEvent( const string& eventName, const string& handleElement )
 	return false;
 }
 
-bool Module::ExecuteCommand( PVOID player, const string& commandName, vector< string > argv )
+bool Module::ExecuteCommand( PVOID player, const string& commandName, const vector< string >& argv )
 {
 	if( !player )
 	{

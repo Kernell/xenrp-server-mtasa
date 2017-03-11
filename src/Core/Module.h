@@ -67,7 +67,7 @@ public:
 	bool                                    AddEvent            ( const string& eventName, const string& handleElement );
 	bool                                    RemoveEvent         ( const string& eventName, const string& handleElement );
 
-	bool                                    ExecuteCommand      ( PVOID player, const string& commandName, vector< string > argv );
+	bool                                    ExecuteCommand      ( PVOID player, const string& commandName, const vector< string >& argv );
 
 	void                                    RegisterFunctions   ();
 

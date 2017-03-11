@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Command\DB.cpp" />
     <ClCompile Include="src\Command\User.cpp" />
     <ClCompile Include="src\Core\Module.cpp" />
     <ClCompile Include="src\Core\MySQL.cpp" />
@@ -60,6 +61,7 @@
     <ClCompile Include="src\xr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Command\DB.h" />
     <ClInclude Include="src\Command\IConsoleCommand.h" />
     <ClInclude Include="src\Command\User.h" />
     <ClInclude Include="src\Core\ILuaModuleManager.h" />

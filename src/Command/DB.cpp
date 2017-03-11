@@ -11,19 +11,19 @@
 *********************************************************/
 
 #include "StdInc.h"
-#include "User.h"
+#include "DB.h"
 #include "Manager/CommandManager.h"
 
 using namespace Command;
 
-User::User( CommandManager* manager ) : IConsoleCommand( manager )
+DB::DB( CommandManager* manager ) : IConsoleCommand( manager )
 {
-	this->Name = "user";
+	this->Name = "db";
 }
 
-bool User::Execute( Element* player, const vector< string >& arguments )
+bool DB::Execute( Element* player, const vector< string >& arguments )
 {
-	this->GetManager()->GetModule()->Printf( "User::Execute - Test\n" );
+	this->GetManager()->GetModule()->Printf( "DB::Execute - Test\n" );
 
 	return false;
 }
