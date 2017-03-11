@@ -437,7 +437,9 @@
     <ClCompile Include="src\Entity\World.cpp">
       <Filter>Entity\World</Filter>
     </ClCompile>
-    <ClCompile Include="src\Command\DB.cpp" />
+    <ClCompile Include="src\Command\DB.cpp">
+      <Filter>Command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Event\EventArgs\ConsoleEventArgs.h">
