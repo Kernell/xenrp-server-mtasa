@@ -25,7 +25,11 @@ MySQL::MySQL( const string& hostname, const string& username, const string& pass
 
 		if( !mysql_real_connect( this->Handle, hostname.c_str(), username.c_str(), password.c_str(), database.c_str(), port, unixSocket.length() ? unixSocket.c_str() : nullptr, clientFlags ) )
 		{
-			throw new exception( "mysql_real_connect failed" );
+			char err[ 128 ];
+
+			sprintf_s( err, "#%d: %s", this->Errno(), this->Error().c_str() );
+
+			throw new exception( err );
 		}
 	}
 }
