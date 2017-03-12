@@ -6503,6 +6503,22 @@ bool Bindings::SetServerPassword( lua_State* pLuaVM, const string& strPassword, 
 	return false;
 }
 
+bool Lua::Bindings::OutputServerLog( lua_State* pLuaVM, const char* text )
+{
+	LuaArguments pLuaArguments;
+
+	pLuaArguments.PushString( text );
+
+	if( pLuaArguments.Call( pLuaVM, "outputServerLog", 1 ) )
+	{
+		LuaArgument pLuaArgument( pLuaVM, -1 );
+
+		return pLuaArgument.GetBoolean();
+	}
+
+	return false;
+}
+
 // General world get funcs
 
 bool Bindings::GetTime( lua_State* pLuaVM, unsigned char& ucHour, unsigned char& ucMinute )

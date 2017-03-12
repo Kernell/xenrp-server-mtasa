@@ -22,6 +22,9 @@ class Console : public Player
 public:
 												Console                     ( PVOID luaUserdata );
 	virtual                                     ~Console                    ();
+
+	virtual bool                                OutputChatBox               ( const string& text, const Color& color = 0xFFE7D9B0, bool colorCoded = false ) override;
+	virtual bool                                OutputConsole               ( const string& text ) override;
 };
 
 #endif

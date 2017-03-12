@@ -465,6 +465,7 @@ namespace Lua
 		static bool						OutputChatBox                   ( lua_State* pLuaVM, const char* szText, PVOID pElement, unsigned char ucRed, unsigned char ucGreen, unsigned char ucBlue, bool bColorCoded );
 		static bool						OutputConsole                   ( lua_State* pLuaVM, const char* szText, PVOID pElement );
 		static bool						SetServerPassword               ( lua_State* pLuaVM, const string& strPassword, bool bSave );
+		static bool                     OutputServerLog                 ( lua_State* pLuaVM, const char* text );
 
 		// General world get funcs
 		static bool						GetTime                         ( lua_State* pLuaVM, unsigned char& ucHour, unsigned char& ucMinute );
