@@ -377,11 +377,6 @@ bool Element::SetLowLod( bool enabled )
 	return Lua::Bindings::SetLowLodElement( LuaVM, LuaUserdata, enabled );
 }
 
-bool Element::OutputChatBox( const string& text, uchar red, uchar green, uchar blue, bool colorCoded )
-{
-	return Lua::Bindings::OutputChatBox( LuaVM, text.c_str(), LuaUserdata, red, green, blue, colorCoded );
-}
-
 bool Element::OutputChatBox( const string& text, const Color& color, bool colorCoded )
 {
 	return Lua::Bindings::OutputChatBox( LuaVM, text.c_str(), LuaUserdata, color.R, color.G, color.B, colorCoded );

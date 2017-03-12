@@ -107,7 +107,6 @@ public:
 	virtual bool                                SetFrozen                   ( bool frozen );
 	virtual bool                                SetLowLod                   ( bool enabled );
 
-	virtual bool                                OutputChatBox               ( const string& text, uchar red = 231, uchar green = 217, uchar blue = 176, bool colorCoded = false );
 	virtual bool                                OutputChatBox               ( const string& text, const Color& color = 0xFFE7D9B0, bool colorCoded = false );
 	virtual bool                                OutputConsole               ( const string& text );
 
