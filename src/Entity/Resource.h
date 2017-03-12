@@ -58,6 +58,7 @@ public:
 	                                Resource                        ( PVOID luaUserdata );
 	                                Resource                        ( const string& resourceName, const char* organizationalDir = nullptr );
 	virtual                         ~Resource                       ();
+	virtual void                    Destroy                         () override;
 
 	virtual Resource*               Copy                            ( const string& newResourceName, const char* organizationalDir = nullptr ) const;
 	virtual Element*                GetRoot                         () const;

@@ -32,8 +32,6 @@ Element::~Element()
 {
 	this->ElementManager->RemoveFromList( this );
 
-	this->Destroy();
-
 	this->LuaUserdata    = nullptr;
 	this->ElementManager = nullptr;
 	this->LuaVM          = nullptr;
@@ -50,6 +48,8 @@ void Element::Save() const
 void Element::Destroy()
 {
 	Lua::Bindings::DestroyElement( LuaVM, LuaUserdata );
+
+	delete this;
 }
 
 Element* Element::Clone( const Math::Vector3& vecPosition, bool cloneChildren ) const

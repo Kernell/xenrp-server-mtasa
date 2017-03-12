@@ -32,6 +32,10 @@ Resource::~Resource()
 {
 }
 
+void Resource::Destroy()
+{
+}
+
 Resource* Resource::Copy( const string& newResourceName, const char* organizationalDir ) const
 {
 	PVOID userdata = Lua::Bindings::CopyResource( LuaVM, LuaUserdata, newResourceName.c_str(), organizationalDir );
