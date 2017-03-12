@@ -6452,7 +6452,7 @@ bool Bindings::OutputChatBox( lua_State* pLuaVM, const char* szText, PVOID pElem
 		pLuaArguments.PushNumber( ucGreen );
 		pLuaArguments.PushNumber( ucBlue );
 
-		pLuaArguments.PushNumber( bColorCoded );
+		pLuaArguments.PushBoolean( bColorCoded );
 	}
 
 	if( pLuaArguments.Call( pLuaVM, "outputChatBox", 1 ) )
