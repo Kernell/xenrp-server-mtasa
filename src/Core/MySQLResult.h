@@ -22,8 +22,8 @@ typedef std::map< string, string > MySQLRow;
 class MySQLResult
 {
 public:
-	typedef vector< MySQLRow* >::iterator       iterator;
-	typedef vector< MySQLRow* >::const_iterator const_iterator;
+	typedef vector< MySQLRow >::iterator       iterator;
+	typedef vector< MySQLRow >::const_iterator const_iterator;
 
 public:
 	MySQLResult( MYSQL_RES* res );
@@ -34,10 +34,10 @@ public:
 	const_iterator      begin        () const;
 	const_iterator      end          () const;
 
-	MySQLRow*           operator[]   ( size_t index ) const;
+	MySQLRow            operator[]   ( size_t index ) const;
 
 private:
-	vector< MySQLRow* > Rows;
+	vector< MySQLRow >  Rows;
 };
 
 #endif

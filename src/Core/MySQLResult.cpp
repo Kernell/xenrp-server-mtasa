@@ -34,7 +34,7 @@ MySQLResult::MySQLResult( MYSQL_RES* result )
 				field = mysql_fetch_field( result );
 			}
 
-			this->Rows.push_back( new MySQLRow( resultRow ) );
+			this->Rows.push_back( MySQLRow( resultRow ) );
 		}
 	}
 
@@ -48,11 +48,6 @@ MySQLResult::~MySQLResult()
 
 void MySQLResult::Free()
 {
-	for( MySQLResult::iterator iter = this->Rows.begin(); iter != this->Rows.end(); ++iter )
-	{
-		delete ( *iter );
-	}
-
 	this->Rows.clear();
 }
 
@@ -71,7 +66,7 @@ MySQLResult::const_iterator MySQLResult::end() const
 	return this->Rows.end();
 }
 
-MySQLRow* MySQLResult::operator[]( size_t index ) const
+MySQLRow MySQLResult::operator[]( size_t index ) const
 {
-	return index < this->Rows.size() ? this->Rows.at( index ) : nullptr;
+	return this->Rows.at( index );
 }
