@@ -26,7 +26,7 @@ MySQLResult::~MySQLResult()
 	}
 }
 
-bool MySQLResult::Empty() const
+bool MySQLResult::IsEmpty() const
 {
 	return this->Result == nullptr;
 }

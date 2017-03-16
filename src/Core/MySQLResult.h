@@ -25,7 +25,7 @@ public:
 	MySQLResult( MYSQL_RES* res );
 	~MySQLResult();
 
-	bool               Empty        () const;
+	bool               IsEmpty      () const;
 	void               DataSeek     ( unsigned long long offset );
 	MYSQL_FIELD*       FetchField   ();
 	unsigned long*     FetchLengths ();
