@@ -20,6 +20,11 @@ MySQLResult::MySQLResult( MYSQL_RES* res ) :
 
 MySQLResult::~MySQLResult()
 {
+	this->Free();
+}
+
+void MySQLResult::Free()
+{
 	if( this->Result )
 	{
 		mysql_free_result( this->Result );
