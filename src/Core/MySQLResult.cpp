@@ -13,9 +13,32 @@
 #include "StdInc.h"
 #include "MySQLResult.h"
 
-MySQLResult::MySQLResult( MYSQL_RES* res ) :
-	Result( res )
+MySQLResult::MySQLResult( MYSQL_RES* result )
 {
+	if( mysql_num_rows( result ) > 0 )
+	{
+		MYSQL_ROW row = nullptr;
+
+		while( row = mysql_fetch_row( result ) )
+		{
+			mysql_field_seek( result, 0 );
+
+			MYSQL_FIELD* field = mysql_fetch_field( result );
+
+			MySQLRow resultRow;
+
+			for( size_t i = 0; field != nullptr; ++i )
+			{
+				resultRow[ field->name ] = row[ i ] ? row[ i ] : "(null)";
+				
+				field = mysql_fetch_field( result );
+			}
+
+			this->Rows.push_back( new MySQLRow( resultRow ) );
+		}
+	}
+
+	mysql_free_result( result );
 }
 
 MySQLResult::~MySQLResult()
@@ -25,77 +48,25 @@ MySQLResult::~MySQLResult()
 
 void MySQLResult::Free()
 {
-	if( this->Result )
+	for( MySQLResult::iterator iter = this->Rows.begin(); iter != this->Rows.end(); ++iter )
 	{
-		mysql_free_result( this->Result );
-	}
-}
-
-bool MySQLResult::IsEmpty() const
-{
-	return this->Result == nullptr;
-}
-
-void MySQLResult::DataSeek( unsigned long long offset )
-{
-	mysql_data_seek( this->Result, offset );
-}
-
-MYSQL_FIELD* MySQLResult::FetchField()
-{
-	return mysql_fetch_field( this->Result );
-}
-
-unsigned long* MySQLResult::FetchLengths()
-{
-	return mysql_fetch_lengths( this->Result );
-}
-
-MYSQL_ROW MySQLResult::FetchRow()
-{
-	return this->Result ? mysql_fetch_row( this->Result ) : nullptr;
-}
-
-MySQLRow MySQLResult::FetchRowAssoc()
-{
-	MySQLRow result;
-
-	MYSQL_ROW row = this->FetchRow();
-
-	if( row )
-	{
-		this->FieldSeek( 0 );
-
-		MYSQL_FIELD* field = this->FetchField();
-		unsigned int i     = 0;
-
-		for( ; field != NULL; ++i )
-		{
-			result[ field->name ] = row[ i ] ? row[ i ] : "(null)";
-
-			field = this->FetchField();
-		}
+		delete ( *iter );
 	}
 
-	return result;
+	this->Rows.clear();
 }
 
-unsigned int MySQLResult::FieldSeek( unsigned int offset )
+size_t MySQLResult::NumRows() const
 {
-	return mysql_field_seek( this->Result, offset );
+	return this->Rows.size();
 }
 
-unsigned int MySQLResult::FieldTell()
+MySQLResult::const_iterator MySQLResult::begin() const
 {
-	return mysql_field_tell( this->Result );
+	return this->Rows.begin();
 }
 
-unsigned int MySQLResult::NumFields() const
+MySQLResult::const_iterator MySQLResult::end() const
 {
-	return mysql_num_fields( this->Result );
-}
-
-unsigned long long MySQLResult::NumRows() const
-{
-	return mysql_num_rows( this->Result );
+	return this->Rows.end();
 }

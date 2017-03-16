@@ -22,23 +22,20 @@ typedef std::map< string, string > MySQLRow;
 class MySQLResult
 {
 public:
+	typedef vector< MySQLRow* >::iterator       iterator;
+	typedef vector< MySQLRow* >::const_iterator const_iterator;
+
+public:
 	MySQLResult( MYSQL_RES* res );
 	~MySQLResult();
 
-	void               Free         ();
-	bool               IsEmpty      () const;
-	void               DataSeek     ( unsigned long long offset );
-	MYSQL_FIELD*       FetchField   ();
-	unsigned long*     FetchLengths ();
-	MYSQL_ROW          FetchRow     ();
-	MySQLRow           FetchRowAssoc();
-	unsigned int       FieldSeek    ( unsigned int offset );
-	unsigned int       FieldTell    ();
-	unsigned int       NumFields    () const;
-	unsigned long long NumRows      () const;
+	void                Free         ();
+	size_t              NumRows      () const;
+	const_iterator      begin        () const;
+	const_iterator      end          () const;
 
 private:
-	MYSQL_RES*         Result;
+	vector< MySQLRow* > Rows;
 };
 
 #endif
