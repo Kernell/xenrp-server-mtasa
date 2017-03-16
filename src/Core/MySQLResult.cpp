@@ -70,3 +70,8 @@ MySQLResult::const_iterator MySQLResult::end() const
 {
 	return this->Rows.end();
 }
+
+MySQLRow* MySQLResult::operator[]( size_t index ) const
+{
+	return index < this->Rows.size() ? this->Rows.at( index ) : nullptr;
+}

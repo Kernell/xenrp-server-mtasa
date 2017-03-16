@@ -34,6 +34,8 @@ public:
 	const_iterator      begin        () const;
 	const_iterator      end          () const;
 
+	MySQLRow*           operator[]   ( size_t index ) const;
+
 private:
 	vector< MySQLRow* > Rows;
 };
