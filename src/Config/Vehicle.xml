@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table name="vehicles">
+  <column name="id" />
+  <column name="owner_id"           type="int(11) unsigned" null="NO"       default="0" />
+  <column name="owner_class"        type="varchar(255)"     null="YES"      default="NULL" />
+  <column name="model"              type="smallint(3)"      null="NO"       default="NULL" />
+  <column name="color"              type="varchar(255)"     null="NO"       default="[[ 255, 255, 255, 0, 0, 0, 128, 128, 128, 64, 64, 64 ]]" />
+  <column name="lights_color"       type="varchar(255)"     null="NO"       default="[[ 255, 255, 255 ]]" />
+  <column name="position"           type="varchar(255)"     null="NO"       default="NULL" />
+  <column name="rotation"           type="varchar(255)"     null="NO"       default="NULL" />
+  <column name="interior"           type="smallint(3)"      null="NO"       default="NULL" />
+  <column name="dimension"          type="smallint(6)"      null="NO"       default="NULL" />
+  <column name="default_position"   type="varchar(255)"     null="NO"       default="NULL" />
+  <column name="default_rotation"   type="varchar(255)"     null="NO"       default="NULL" />
+  <column name="default_interior"   type="smallint(3)"      null="NO"       default="NULL" />
+  <column name="default_dimension"  type="smallint(6)"      null="NO"       default="NULL" />
+  <column name="plate"              type="varchar(8)"       null="NO"       default="NULL" />
+  <column name="variants"           type="varchar(128)"     null="YES"      default="NULL" />
+  <column name="upgrades"           type="text"             null="YES"      default="NULL" />
+  <column name="wheels_states"      type="text"             null="YES"      default="NULL" />
+  <column name="panel_states"       type="text"             null="YES"      default="NULL" />
+  <column name="door_state"         type="text"             null="YES"      default="NULL" />
+  <column name="health"             type="smallint(4)"      null="NO"       default="1000" />
+  <column name="fuel"               type="float"            null="NO"       default="100" />
+  <column name="last_time"          type="int(11) unsigned" null="NO"       default="0"	/>
+  <column name="last_driver"        type="varchar(64)"      null="YES"      default="NULL" />
+  <column name="locked"             type="enum('Yes','No')" null="NO"       default="No" />
+  <column name="engine"             type="enum('on','off')" null="NO"       default="off" />
+  <column name="lights"             type="enum('on','off')" null="NO"       default="off" />
+  <column name="element_data"       type="text"             null="YES"      default="NULL" />
+  <column name="deleted"            type="timestamp"        null="YES"      default="NULL" />
+</table>
