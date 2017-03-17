@@ -12,7 +12,7 @@
 
 #include "StdInc.h"
 #include "User.h"
-#include "Manager/CommandManager.h"
+#include "Core/Module.h"
 
 using namespace Command;
 
