@@ -12,12 +12,13 @@
 
 #include "StdInc.h"
 #include "CommandManager.h"
+#include "Core/Module.h"
+#include "Command/User.h"
 
 CommandManager::CommandManager( ::Module* module )
 {
 	this->Module = module;
 
-	this->Add( new Command::DB( this ) );
 	this->Add( new Command::User( this ) );
 }
 

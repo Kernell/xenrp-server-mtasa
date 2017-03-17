@@ -15,11 +15,9 @@ class CommandManager;
 #ifndef __COMMANDMANAGER_H
 #define __COMMANDMANAGER_H
 
-#include "Core/Module.h"
-
 #include "Command/IConsoleCommand.h"
-#include "Command/DB.h"
-#include "Command/User.h"
+
+class Module;
 
 class CommandManager
 {
