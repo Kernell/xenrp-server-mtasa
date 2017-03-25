@@ -120,14 +120,12 @@ unsigned long long MySQL::InsertID() const
 
 MySQLResult* MySQL::Query( const string& query )
 {
-	MYSQL_RES* res = nullptr;
-
 	if( mysql_real_query( this->Handle, query.c_str(), static_cast< unsigned long >( query.length() ) ) )
 	{
 		return nullptr;
 	}
 
-	res = mysql_store_result( this->Handle );
+	MYSQL_RES* res = mysql_store_result( this->Handle );
 
 	if( res == nullptr && mysql_field_count( this->Handle ) > 0 )
 	{
@@ -139,14 +137,12 @@ MySQLResult* MySQL::Query( const string& query )
 
 MySQLResult* MySQL::UnbufferedQuery( const string& query )
 {
-	MYSQL_RES* res;
-
 	if( mysql_real_query( this->Handle, query.c_str(), static_cast< unsigned long >( query.length() ) ) )
 	{
 		return nullptr;
 	}
 
-	res = mysql_use_result( this->Handle );
+	MYSQL_RES* res = mysql_use_result( this->Handle );
 
 	if( res == nullptr && mysql_field_count( this->Handle ) > 0 )
 	{
@@ -154,6 +150,11 @@ MySQLResult* MySQL::UnbufferedQuery( const string& query )
 	}
 
 	return new MySQLResult( res );
+}
+
+bool MySQL::QueryFree( const string& query )
+{
+	return mysql_real_query( this->Handle, query.c_str(), static_cast< unsigned long >( query.length() ) ) == 0;
 }
 
 bool MySQL::SetCharacterSet( const string& csname )

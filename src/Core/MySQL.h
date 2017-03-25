@@ -39,6 +39,7 @@ public:
 	unsigned long long InsertID            () const;
 	MySQLResult*       Query               ( const string& query );
 	MySQLResult*       UnbufferedQuery     ( const string& query );
+	bool               QueryFree           ( const string& query );
 	bool               SetCharacterSet     ( const string& csname );
 	string             Stat                ();
 	unsigned long      WarningCount        ();
