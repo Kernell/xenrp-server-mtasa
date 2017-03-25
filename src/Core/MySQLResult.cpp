@@ -51,6 +51,11 @@ void MySQLResult::Free()
 	this->Rows.clear();
 }
 
+vector< MySQLRow > MySQLResult::FetchAll() const
+{
+	return this->Rows;
+}
+
 size_t MySQLResult::NumRows() const
 {
 	return this->Rows.size();

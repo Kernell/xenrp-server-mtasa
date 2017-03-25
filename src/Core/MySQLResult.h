@@ -30,6 +30,7 @@ public:
 	~MySQLResult();
 
 	void                Free         ();
+	vector< MySQLRow >  FetchAll     () const;
 	size_t              NumRows      () const;
 	const_iterator      begin        () const;
 	const_iterator      end          () const;
