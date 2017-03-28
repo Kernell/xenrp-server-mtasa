@@ -17,6 +17,7 @@ class MySQL;
 
 #include <mysql.h>
 #include "MySQLResult.h"
+#include "MySQLException.h"
 
 class MySQL
 {
