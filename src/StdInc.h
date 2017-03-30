@@ -30,6 +30,7 @@ using namespace std;
 #include <vector>
 #include <map>
 #include <string.h>
+#include <sstream>
 #include <sys/stat.h>
 #include <assert.h>
 
@@ -97,3 +98,12 @@ typedef void*               PVOID;
 #include "SharedUtil/VehicleColor.h"
 #include "SharedUtil/WeaponType.h"
 #include "SharedUtil/SharedUtil.h"
+
+string strtolower( string copy );
+string strtoupper( string copy );
+
+string VectorJoin( const vector< string >& vector, const string& delimiter );
+
+vector< string > StringSplit( const string& str, const string& delimiter );
+
+string str_replace( const string& search, const string& replace, const string& subject );
